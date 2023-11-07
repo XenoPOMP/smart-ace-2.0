@@ -5,17 +5,17 @@ nav.appNav {
     @apply flex gap-[1em] font-medium text-head-icon-color-inactive;
 
     li {
-      @apply hover:text-head-icon-color;
+      @apply hover:text-head-icon-color py-[.9em];
 
       display: inline-block;
 
       transition: .15s ease color;
 
       a {
-        @apply py-[.9em] border-head-icon-color
+        @apply pb-[.75em] border-head-icon-color
                text-head-icon-color;
 
-        border-bottom-width: 5px;
+        border-bottom-width: .25em;
         border-bottom-style: solid;
 
         &.notActive {

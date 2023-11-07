@@ -11,7 +11,14 @@ const Navbar: VariableFC<'nav', NavbarProps, 'children'> = ({
   ...props
 }) => {
   return (
-    <nav className={cn(styles.appNav, className)} {...props}>
+    <nav
+      className={cn(
+        styles.appNav,
+        'bg-head-button-back px-[1.5em] rounded-[2.5em]',
+        className
+      )}
+      {...props}
+    >
       <ul>
         <li>
           <NavLink href={'/'}>Главная</NavLink>
