@@ -1,0 +1,5 @@
+a.logo {
+  @apply text-logo-font-color hover:text-logo-main;
+
+  transition: .15s ease color;
+}
