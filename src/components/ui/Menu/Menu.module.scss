@@ -1,0 +1,10 @@
+.menuWrapper {
+  display: flex;
+  gap: 1em;
+
+  button.menuButton {
+    svg {
+      width: 45%;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "src/styles/templates";
+
+button.appButton {
+  &.header {
+    &.round {
+      @extend %flexCenter;
+
+      @apply text-head-icon-color-inactive
+             hover:text-head-icon-color
+             bg-head-button-back;
+
+      transition: .15s ease color;
+      height: 3.3em;
+      aspect-ratio: 1;
+      border-radius: 50%;
+    }
+  }
+}
