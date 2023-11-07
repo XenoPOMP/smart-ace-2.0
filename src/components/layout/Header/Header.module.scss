@@ -1,9 +1,6 @@
 header.appHeader {
-  @apply py-[2em];
-
   font-size: 1rem; // 1em = 20px
-  padding-left: var(--global-padding);
-  padding-right: var(--global-padding);
+  padding: var(--global-padding);
 
   section.grid {
     display: grid;

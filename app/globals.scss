@@ -10,4 +10,8 @@ body {
   --global-padding: 2rem;
 
   font-size: 20px;
+
+  @media (max-width: 748px) {
+    --global-padding: 1rem;
+  }
 }
