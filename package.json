@@ -17,7 +17,9 @@
     "@xenopomp/advanced-utils": "^1.2.1",
     "autoprefixer": "10.4.16",
     "axios": "1.6.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "classnames": "^2.3.2",
+    "framer-motion": "^10.16.4",
     "next": "^14.0.0",
     "postcss": "8.4.31",
     "react": "^18.2.0",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@types/body-scroll-lock": "^3.1.2",
     "@xenopomp/advanced-types": "latest",
     "prettier": "2.8.1"
   }

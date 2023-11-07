@@ -1,9 +1,11 @@
 'use client';
 
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import cn from 'classnames';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
+import MenuOverlay from '@/src/components/screens/MenuOverlay/MenuOverlay';
 import Button from '@/src/components/ui/Button/Button';
 
 import styles from './Menu.module.scss';
@@ -12,9 +14,15 @@ import type { MenuProps } from './Menu.props';
 const Menu: FC<MenuProps> = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    setIsOpen(false);
+    enableBodyScroll(document.body);
+  };
 
-  const openModal = () => setIsOpen(true);
+  const openModal = () => {
+    setIsOpen(true);
+    disableBodyScroll(document.body);
+  };
 
   return (
     <div className={cn('relative', styles.menuWrapper)}>
@@ -33,7 +41,18 @@ const Menu: FC<MenuProps> = ({}) => {
         </Button>
       </Link>
 
-      <Button variant={'headerRound'} className={cn(styles.menuButton)}>
+      <Button
+        variant={'headerRound'}
+        className={cn(styles.menuButton, 'z-[105]')}
+        onClick={() => {
+          if (isOpen) {
+            closeModal();
+            return;
+          }
+
+          openModal();
+        }}
+      >
         <svg viewBox='0 0 31 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <rect y='6' width='30' height='3' rx='1.5' fill='currentColor' />
           <rect
@@ -52,6 +71,8 @@ const Menu: FC<MenuProps> = ({}) => {
           />
         </svg>
       </Button>
+
+      <MenuOverlay isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 };
