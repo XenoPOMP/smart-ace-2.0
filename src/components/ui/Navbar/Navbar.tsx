@@ -15,6 +15,7 @@ const Navbar: VariableFC<'nav', NavbarProps, 'children'> = ({
       className={cn(
         styles.appNav,
         'bg-head-button-back px-[1.5em] rounded-[2.5em]',
+        'select-none',
         className
       )}
       {...props}
