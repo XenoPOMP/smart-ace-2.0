@@ -13,5 +13,6 @@ export const AppConstants: IAppConstants = {
       },
     ],
     url: process.env.CANONICAL_URL,
+    type: 'website',
   },
 };

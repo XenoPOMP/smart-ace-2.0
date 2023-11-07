@@ -6,7 +6,9 @@ import { Metadata } from 'next';
  *
  * @see [Next Metadata docs](https://nextjs.org/docs/app/building-your-application/optimizing/metadata#merging)
  */
-type OpenGraphConfig = Defined<NonNullable<Metadata['openGraph']>>;
+type OpenGraphConfig = Defined<
+  NonNullable<Extract<Metadata['openGraph'], { type: 'website' }>>
+>;
 
 export type OGImage = Defined<Exclude<OpenGraphConfig['images'], Array<any>>>;
 
