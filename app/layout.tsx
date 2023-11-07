@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import type { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 
@@ -7,6 +8,7 @@ import Header from '@/src/components/layout/Header/Header';
 import Providers from '@/src/components/layout/Providers/Providers';
 
 import './globals.scss';
+import styles from './layout.module.scss';
 
 const mainFont = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -44,13 +46,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={mainFont.className}>
+      <body className={cn(mainFont.className, styles.appBody)}>
         <Providers>
           <Header />
 
           {children}
 
-          <Footer />
+          {/*<Footer />*/}
         </Providers>
       </body>
     </html>
