@@ -9,8 +9,20 @@ aside.dialog {
   section.menu {
     @extend %scrollable;
 
+    @apply text-ov-font-inactive p-[2rem]
+           flex flex-col gap-[.625em];
+
+    font-size: 1.6em; // 1em = 20px
     width: 75%;
     height: 100%;
-    background: blue;
+    line-height: 100%;
+
+    a {
+      transition: .15s ease color;
+
+      &:hover {
+        @apply text-ov-font-active;
+      }
+    }
   }
 }

@@ -6,6 +6,9 @@ import cn from 'classnames';
 import { motion } from 'framer-motion';
 import { ComponentProps, FC, Fragment } from 'react';
 
+import CustomLink from '@/src/components/ui/CustomLink/CustomLink';
+import { navLinkData } from '@/src/data/nav-link.data';
+
 import styles from './MenuOverlay.module.scss';
 import type { MenuOverlayProps } from './MenuOverlay.props';
 
@@ -31,7 +34,22 @@ const MenuOverlay: VariableFC<typeof motion.aside, MenuOverlayProps> = ({
           className
         )}
       >
-        <section className={cn('', styles.menu)}>Dialog</section>
+        <section className={cn('', styles.menu)}>
+          {navLinkData.map((link, index) => {
+            const { href, children } = link;
+
+            return (
+              <CustomLink
+                href={href}
+                applyStyles={false}
+                key={`menu-link-${index}`}
+                className={cn('w-max')}
+              >
+                {children}
+              </CustomLink>
+            );
+          })}
+        </section>
       </motion.aside>
     </>
   );
