@@ -1,7 +1,7 @@
 @import "src/styles/templates";
 
 aside.dialog {
-  @apply bg-ov-backdrop;
+  @apply bg-opacity-80 bg-ov-backdrop;
 
   width: 100vw;
   height: 100dvh;
