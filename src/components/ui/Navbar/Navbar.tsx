@@ -1,6 +1,7 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
-import { FC } from 'react';
+
+import NavLink from '@/src/components/ui/NavLink/NavLink';
 
 import styles from './Navbar.module.scss';
 import type { NavbarProps } from './Navbar.props';
@@ -10,8 +11,20 @@ const Navbar: VariableFC<'nav', NavbarProps, 'children'> = ({
   ...props
 }) => {
   return (
-    <nav className={cn(className)} {...props}>
-      Navbar
+    <nav className={cn(styles.appNav, className)} {...props}>
+      <ul>
+        <li>
+          <NavLink href={'/'}>Главная</NavLink>
+        </li>
+
+        <li>
+          <NavLink href={'/services'}>Услуги</NavLink>
+        </li>
+
+        <li>
+          <NavLink href={'/blog'}>Блог</NavLink>
+        </li>
+      </ul>
     </nav>
   );
 };
