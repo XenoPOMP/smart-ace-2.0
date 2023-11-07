@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {}
+body {
+  @apply bg-background-primary text-red-500;
+}
 
 :root {
   font-size: 20px;
