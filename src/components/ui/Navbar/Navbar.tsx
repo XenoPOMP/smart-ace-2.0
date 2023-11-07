@@ -2,6 +2,7 @@ import { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
 import NavLink from '@/src/components/ui/NavLink/NavLink';
+import { navLinkData } from '@/src/data/nav-link.data';
 
 import styles from './Navbar.module.scss';
 import type { NavbarProps } from './Navbar.props';
@@ -21,17 +22,15 @@ const Navbar: VariableFC<'nav', NavbarProps, 'children'> = ({
       {...props}
     >
       <ul>
-        <li>
-          <NavLink href={'/'}>Главная</NavLink>
-        </li>
+        {navLinkData.map((link, index) => {
+          const { href, children } = link;
 
-        <li>
-          <NavLink href={'/services'}>Услуги</NavLink>
-        </li>
-
-        <li>
-          <NavLink href={'/blog'}>Блог</NavLink>
-        </li>
+          return (
+            <li key={`nav-item-${index}`}>
+              <NavLink href={href}>{children}</NavLink>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
