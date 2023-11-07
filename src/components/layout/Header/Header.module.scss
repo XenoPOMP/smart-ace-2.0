@@ -1,0 +1,15 @@
+header.appHeader {
+  @apply px-[2rem] py-[2em];
+
+  font-size: 1rem; // 1em = 20px
+
+  section.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+
+    article.cell {
+      @apply flex justify-center items-center;
+    }
+  }
+}
