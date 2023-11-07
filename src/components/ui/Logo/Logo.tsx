@@ -13,6 +13,7 @@ const font = AmazingGrotesk;
 
 const Logo: VariableFC<typeof CustomLink, LogoProps, 'children' | 'href'> = ({
   className,
+  noHoverAnimation = false,
   noText = false,
   ...props
 }) => {
@@ -23,6 +24,7 @@ const Logo: VariableFC<typeof CustomLink, LogoProps, 'children' | 'href'> = ({
         'font-[900] text-logo-font-color',
         'select-none inline-block',
         styles.logo,
+        !noHoverAnimation && styles.withHover,
         className
       )}
       href={'/'}

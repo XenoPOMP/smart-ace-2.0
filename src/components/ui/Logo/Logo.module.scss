@@ -1,5 +1,9 @@
 a.logo {
-  @apply text-logo-font-color hover:text-logo-main;
+  @apply text-logo-font-color;
 
   transition: .15s ease color;
+
+  &.withHover {
+    @apply hover:text-logo-main;
+  }
 }
