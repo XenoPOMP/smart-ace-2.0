@@ -13,12 +13,14 @@ const Header: FC<HeaderProps> = ({}) => {
   return (
     <header className={cn(styles.appHeader)}>
       <UiContainer className={cn(styles.grid)}>
-        <article className={cn(styles.cell, '!justify-start')}>
+        <article className={cn(styles.cell, styles.left, '!justify-start')}>
           <Navbar />
         </article>
 
-        <article className={cn(styles.cell)}>
-          <Logo />
+        <article className={cn(styles.cell, styles.middle)}>
+          <Logo className={cn(styles.logo, styles.desktop)} />
+
+          <Logo className={cn(styles.logo, styles.mobile)} noText />
         </article>
 
         <article className={cn(styles.cell, '!justify-end')}>

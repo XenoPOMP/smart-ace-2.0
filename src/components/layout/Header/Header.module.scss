@@ -1,7 +1,9 @@
 header.appHeader {
-  @apply px-[2rem] py-[2em];
+  @apply py-[2em];
 
   font-size: 1rem; // 1em = 20px
+  padding-left: var(--global-padding);
+  padding-right: var(--global-padding);
 
   section.grid {
     display: grid;
@@ -10,6 +12,44 @@ header.appHeader {
 
     article.cell {
       @apply flex justify-center items-center;
+
+      &.middle {
+        a.logo {
+          &.mobile {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1080px) {
+      grid-template-columns: 1fr max-content;
+
+      article.cell {
+        &.left {
+          display: none;
+        }
+
+        &.middle {
+          justify-content: start;
+        }
+      }
+    }
+
+    @media (max-width: 520px) {
+      article.cell {
+        &.middle {
+          a.logo {
+            &.desktop {
+              display: none;
+            }
+
+            &.mobile {
+              display: inline-block;
+            }
+          }
+        }
+      }
     }
   }
 }
