@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { IBM_Plex_Sans } from 'next/font/google';
 
 import { AppConstants } from '@/app/app.constants';
 import Footer from '@/src/components/layout/Footer/Footer';
@@ -8,7 +8,10 @@ import Providers from '@/src/components/layout/Providers/Providers';
 
 import './globals.scss';
 
-const mainFont = Inter({ subsets: ['latin'] });
+const mainFont = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+});
 
 export const metadata: Metadata = {
   title: {
