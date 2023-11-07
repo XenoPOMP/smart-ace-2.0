@@ -26,12 +26,12 @@ const MenuOverlay: VariableFC<typeof motion.aside, MenuOverlayProps> = ({
         initial={animation}
         animate={animation}
         className={cn(
-          'bg-red-500 z-[100] fixed top-0 left-0',
+          'z-[100] fixed bottom-0 right-0',
           styles.dialog,
           className
         )}
       >
-        Dialog
+        <section className={cn('', styles.menu)}>Dialog</section>
       </motion.aside>
     </>
   );

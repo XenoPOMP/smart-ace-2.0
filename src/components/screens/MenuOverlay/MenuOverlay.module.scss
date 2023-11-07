@@ -1,4 +1,16 @@
+@import "src/styles/templates";
+
 aside.dialog {
+  @apply bg-ov-backdrop;
+
   width: 100vw;
   height: 100dvh;
+
+  section.menu {
+    @extend %scrollable;
+
+    width: 75%;
+    height: 100%;
+    background: blue;
+  }
 }
