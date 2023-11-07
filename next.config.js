@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  env: {
+    CANONICAL_URL: process.env.CANONICAL_URL,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
