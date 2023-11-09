@@ -14,6 +14,14 @@
     h1 {
       font-size: 5em;
       line-height: normal;
+
+      @media (max-width: 1500px) {
+        font-size: 4em;
+      }
+
+      @media (max-width: 939px) {
+        font-size: 2.5em;
+      }
     }
   }
 
@@ -24,5 +32,26 @@
 
     padding-left: var(--global-padding);
     padding-right: var(--global-padding);
+  }
+
+  @media (max-width: 1361px) {
+    --proportion: 1.25fr max-content 1fr !important;
+  }
+
+  @media (max-width: 768px) {
+    --proportion: max-content 1fr !important;
+
+    main.mainPage {
+      display: none;
+    }
+
+    aside.mainPage {
+      align-items: center !important;
+
+      a {
+        display: inherit;
+        justify-content: center;
+      }
+    }
   }
 }

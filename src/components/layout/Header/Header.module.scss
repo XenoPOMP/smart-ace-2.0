@@ -47,7 +47,10 @@ header.appHeader {
             }
 
             &.mobile {
+              @apply bg-background-primary;
+
               display: inline-block;
+              border-radius: 50%;
             }
           }
         }
