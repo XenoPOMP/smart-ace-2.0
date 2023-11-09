@@ -2,6 +2,10 @@ header.appHeader {
   font-size: 1rem; // 1em = 20px
   padding: var(--global-padding);
   z-index: 50;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 1;
 
   section.grid {
     display: grid;
