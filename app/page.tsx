@@ -26,7 +26,7 @@ export default function Home() {
         <p>Пожалуйста, посмотрите на наши предложения</p>
       </PageWithPatch.Main>
 
-      <PageWithPatch.Patch className={cn('bg-red-500 text-black')} />
+      <PageWithPatch.Patch />
 
       <PageWithPatch.Aside className={cn(styles.mainPage)}>
         <FrontCard
