@@ -1,5 +1,7 @@
 import { CSSProperties } from 'react';
 
+type ColumnTemplate = NonNullable<CSSProperties['gridTemplateColumns']>;
+
 export interface PageWithPatchProps {
-  proportion?: `${CSSProperties['gridTemplateColumns']} max-content ${CSSProperties['gridTemplateColumns']}`;
+  proportion?: `${ColumnTemplate} max-content ${ColumnTemplate}`;
 }
