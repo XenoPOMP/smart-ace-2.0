@@ -10,7 +10,7 @@ import Main from './Main';
 import styles from './PageWithPatch.module.scss';
 import type { PageWithPatchProps } from './PageWithPatch.props';
 
-const PageWithPatch: FC<PropsWith<'children', PageWithPatchProps> & {}> & {
+const PageWithPatch: VariableFC<'div', PageWithPatchProps> & {
   Main: VariableFC<typeof Main, {}>;
   Patch: VariableFC<typeof Patch, {}>;
   Aside: VariableFC<typeof Aside, {}>;
