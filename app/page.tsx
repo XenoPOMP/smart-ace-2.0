@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { Balsamiq_Sans } from 'next/font/google';
 
 import PageWithPatch from '@/src/components/layout/PageWithPatch/PageWithPatch';
+import FrontCard from '@/src/components/ui/FrontCard/FrontCard';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer';
 
 import styles from './MainPage.module.scss';
@@ -25,9 +26,21 @@ export default function Home() {
         <p>Пожалуйста, посмотрите на наши предложения</p>
       </PageWithPatch.Main>
 
-      <PageWithPatch.Patch className={cn('bg-red-500 text-black px-[.5rem]')} />
+      <PageWithPatch.Patch className={cn('bg-red-500 text-black')} />
 
-      <PageWithPatch.Aside>Aside</PageWithPatch.Aside>
+      <PageWithPatch.Aside className={cn(styles.mainPage)}>
+        <FrontCard
+          title={'Очень важное заявление'}
+          subTitle={'Наше передовое программное обеспечение позволяет вам...'}
+          desc={'Крутота блин реально ихихихихихихихихихихиххх'}
+        />
+
+        <FrontCard
+          title={'Очень важное заявление'}
+          subTitle={'Наше передовое программное обеспечение позволяет вам...'}
+          desc={'Крутота блин реально ихихихихихихихихихихиххх'}
+        />
+      </PageWithPatch.Aside>
     </PageWithPatch>
   );
 }

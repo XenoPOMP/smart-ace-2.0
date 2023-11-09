@@ -23,7 +23,7 @@ const BackgroundImage: VariableFC<
 > = ({ className, objectFit = 'cover', ...props }) => {
   return (
     <Image
-      className={cn('z-[-2]', className)}
+      className={cn('z-[-2] absolute top-0 left-0 w-full h-full', className)}
       {...props}
       style={{
         objectFit,

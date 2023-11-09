@@ -1,0 +1,42 @@
+@import "src/styles/templates";
+
+section.frontCard {
+  @apply p-[1em] bg-main-card-back rounded-[1.9em];
+
+  font-size: 1em; // 1em = 20px
+  width: min(349px, 100%);
+  line-height: normal;
+
+  header {
+    position: relative;
+    box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.25);
+    aspect-ratio: 309 / 173.81;
+    background: transparent;
+    z-index: 1;
+    border-radius: 1em;
+    overflow: hidden;
+
+    h2 {
+      @apply font-semibold text-main-card-header p-[1em]
+             w-full h-full flex items-end;
+
+      z-index: 200;
+    }
+  }
+
+  footer.body {
+    @apply mt-[4.1em] text-main-card-content-font;
+
+    article.content {
+      @apply flex flex-col gap-[.5em];
+
+      h3 {
+        @apply font-semibold;
+      }
+
+      p {
+        font-size: .75em;
+      }
+    }
+  }
+}

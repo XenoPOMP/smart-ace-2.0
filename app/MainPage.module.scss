@@ -1,3 +1,5 @@
+@import "src/styles/templates";
+
 .pageWrapper {
   font-size: 1rem; // 1em = 20px
 
@@ -13,5 +15,14 @@
       font-size: 5em;
       line-height: normal;
     }
+  }
+
+  aside.mainPage {
+    @extend %scrollable;
+
+    @apply flex flex-col gap-[2em];
+
+    padding-left: var(--global-padding);
+    padding-right: var(--global-padding);
   }
 }
