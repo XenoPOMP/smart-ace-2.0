@@ -1,0 +1,17 @@
+.pageWrapper {
+  font-size: 1rem; // 1em = 20px
+
+  main.mainPage {
+    @apply flex flex-col gap-[1.9em]
+           text-main-left-header justify-center;
+
+    overflow-y: hidden;
+    padding-left: var(--global-padding);
+    padding-right: var(--global-padding);
+
+    h1 {
+      font-size: 5em;
+      line-height: normal;
+    }
+  }
+}

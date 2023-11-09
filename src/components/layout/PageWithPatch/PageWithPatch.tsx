@@ -10,10 +10,14 @@ import Main from './Main';
 import styles from './PageWithPatch.module.scss';
 import type { PageWithPatchProps } from './PageWithPatch.props';
 
+interface BlockSharedProps {
+  hasTopPadding?: boolean;
+}
+
 const PageWithPatch: VariableFC<'div', PageWithPatchProps> & {
-  Main: VariableFC<typeof Main, {}>;
-  Patch: VariableFC<typeof Patch, {}>;
-  Aside: VariableFC<typeof Aside, {}>;
+  Main: VariableFC<typeof Main, BlockSharedProps & {}>;
+  Patch: VariableFC<typeof Patch, BlockSharedProps & {}>;
+  Aside: VariableFC<typeof Aside, BlockSharedProps & {}>;
 } = ({ children, className, proportion = '1fr max-content 1fr', ...props }) => {
   return (
     <UiContainer
@@ -31,16 +35,26 @@ const PageWithPatch: VariableFC<'div', PageWithPatchProps> & {
   );
 };
 
-PageWithPatch.Main = ({ className, ...props }) => {
-  return <Main className={cn(styles.mainPageBlock, className)} {...props} />;
+PageWithPatch.Main = ({ className, hasTopPadding = true, ...props }) => {
+  return (
+    <Main
+      className={cn(styles.mainPageBlock, className, !hasTopPadding && '!py-0')}
+      {...props}
+    />
+  );
 };
 
 PageWithPatch.Patch = ({ ...props }) => {
   return <Patch {...props} />;
 };
 
-PageWithPatch.Aside = ({ className, ...props }) => {
-  return <Aside className={cn(styles.mainPageBlock, className)} {...props} />;
+PageWithPatch.Aside = ({ className, hasTopPadding = true, ...props }) => {
+  return (
+    <Aside
+      className={cn(styles.mainPageBlock, className, !hasTopPadding && '!py-0')}
+      {...props}
+    />
+  );
 };
 
 export default PageWithPatch;
