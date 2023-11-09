@@ -4,4 +4,5 @@ export interface MarqueeProps {
   loop?: boolean;
   scrollSpeed?: number;
   scrollDelay?: number;
+  as?: 'div' | 'marquee';
 }

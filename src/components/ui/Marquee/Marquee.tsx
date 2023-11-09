@@ -12,12 +12,15 @@ const Marquee: VariableFC<'div', MarqueeProps> = ({
   loop = false,
   scrollSpeed = 6,
   scrollDelay = 85,
+  as = 'marquee',
   ...props
 }) => {
+  const Component = as;
+
   return (
     <>
       {/* @ts-ignore */}
-      <marquee
+      <Component
         behavior={behavior}
         direction={direction}
         loop={loop}
@@ -28,7 +31,7 @@ const Marquee: VariableFC<'div', MarqueeProps> = ({
       >
         {children}
         {/* @ts-ignore */}
-      </marquee>
+      </Component>
     </>
   );
 };

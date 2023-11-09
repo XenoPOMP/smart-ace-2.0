@@ -1,0 +1,15 @@
+.runningLine {
+  @apply bg-opacity-40 w-[1em] h-full;
+
+  overflow: hidden;
+  max-height: 100dvh;
+
+  .tag {
+    @apply -rotate-90 font-semibold text-patch;
+
+    &:not(:first-of-type) {
+      // @apply mt-[7ch];
+      margin-top: calc(4.5ch + .5em);
+    }
+  }
+}
