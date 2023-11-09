@@ -25,7 +25,7 @@ const PageWithPatch: VariableFC<'div', PageWithPatchProps> & {
       className={cn(styles.wrapper, className)}
       style={
         {
-          '--propotion': proportion,
+          '--proportion': proportion,
         } as CSSProperties
       }
       {...props}
