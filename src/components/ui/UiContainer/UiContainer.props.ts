@@ -1,4 +1,4 @@
-import { type ElementType, Fragment } from 'react';
+import { ComponentProps, type ElementType } from 'react';
 
 export interface UiContainerProps {
   margin?: string;
