@@ -14,11 +14,11 @@ const PageWithPatch: VariableFC<'div', PageWithPatchProps> & {
   Main: VariableFC<typeof Main, {}>;
   Patch: VariableFC<typeof Patch, {}>;
   Aside: VariableFC<typeof Aside, {}>;
-} = ({ children, proportion = '1fr max-content 1fr', ...props }) => {
+} = ({ children, className, proportion = '1fr max-content 1fr', ...props }) => {
   return (
     <UiContainer
       as={'div'}
-      className={cn(styles.wrapper)}
+      className={cn(styles.wrapper, className)}
       style={
         {
           '--propotion': proportion,
