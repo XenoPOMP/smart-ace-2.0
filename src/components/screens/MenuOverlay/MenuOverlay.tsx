@@ -44,6 +44,9 @@ const MenuOverlay: VariableFC<typeof motion.aside, MenuOverlayProps> = ({
                 applyStyles={false}
                 key={`menu-link-${index}`}
                 className={cn('w-max')}
+                onClick={() => {
+                  closeModal();
+                }}
               >
                 {children}
               </CustomLink>

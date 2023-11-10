@@ -1,0 +1,11 @@
+.servicePageWrapper {
+  aside.searchBlock {
+    background: rgba(0 0 255 / .25);
+
+    width: min(539px, 28vw);
+
+    padding-left: calc(var(--global-padding) / 2);
+    padding-right: calc(var(--global-padding) / 2);
+    padding-bottom: calc(var(--global-padding) / 2);
+  }
+}
