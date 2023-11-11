@@ -1,4 +1,13 @@
+@import "src/styles/templates";
+
 .servicePageWrapper {
+  main.searchLayout {
+    @extend %scrollable;
+
+    padding-left: calc(var(--global-padding) / 2);
+    padding-right: var(--global-padding);
+  }
+
   aside.searchBlock {
     background: rgba(0 0 255 / .25);
 
