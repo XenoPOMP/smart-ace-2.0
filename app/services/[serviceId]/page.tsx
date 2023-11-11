@@ -19,13 +19,17 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
     <>
       <p>ID: {serviceId}</p>
 
-      {comments.data.map(comment => {
-        return (
-          <>
-            <CommentBlock comment={comment} />
-          </>
-        );
-      })}
+      {comments.data.length === 0 ? (
+        <>No comments yet</>
+      ) : (
+        comments.data.map(comment => {
+          return (
+            <>
+              <CommentBlock comment={comment} />
+            </>
+          );
+        })
+      )}
     </>
   );
 };
