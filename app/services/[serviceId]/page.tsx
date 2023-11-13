@@ -5,6 +5,7 @@ import { FC, Suspense } from 'react';
 import Loader from '@/src/components/ui/Loader/Loader';
 import { servicesData } from '@/src/data/services.data';
 import CommentSection from '@/src/sections/CommentSection/CommentSection';
+import ServiceCardGrid from '@/src/sections/ServiceCardGrid/ServiceCardGrid';
 
 import styles from './ServiceWithIdPage.module.scss';
 
@@ -49,6 +50,10 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
           </p>
         )}
       </header>
+
+      <Suspense fallback={<ServiceCardGrid.Layout />}>
+        <ServiceCardGrid service={currentService} />
+      </Suspense>
 
       <Suspense fallback={<SectionLoader />}>
         <CommentSection className={cn('mt-[1em]')} serviceId={serviceId} />

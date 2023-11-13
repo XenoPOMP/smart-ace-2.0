@@ -1,0 +1,19 @@
+@import "src/styles/templates";
+
+section.serviceGrid {
+  @apply mt-[2.25em];
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(var(--global-padding) / 2);
+
+  article.card {
+    span {
+      text-align: center;
+    }
+
+    strong {
+      @apply font-medium;
+    }
+  }
+}

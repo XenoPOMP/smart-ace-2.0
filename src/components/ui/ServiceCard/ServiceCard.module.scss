@@ -1,0 +1,18 @@
+@import "src/styles/templates";
+
+article.card {
+  @apply bg-head-button-back rounded-[1em] p-[.5em] text-service-font
+         flex flex-col gap-[.5em];
+
+  line-height: 100%;
+
+  .children {
+    @extend %flexCenter;
+
+    min-height: 6em;
+  }
+
+  footer {
+    @extend %flexCenter;
+  }
+}
