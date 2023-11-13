@@ -3,7 +3,7 @@ import axios from 'axios';
 import cn from 'classnames';
 import { FC } from 'react';
 
-import CommentBlock from '@/src/components/ui/CommentBlock/CommentBlock';
+import CommentBlock from '@/src/components/blocks/CommentBlock/CommentBlock';
 import { IComment } from '@/src/interfaces/Comment.interface';
 import { createQueryString } from '@/src/utils/createQueryString';
 
