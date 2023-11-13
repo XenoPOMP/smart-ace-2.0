@@ -13,11 +13,13 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({}) => {
     <section className={cn('')}>
       <p>Search what you need</p>
 
-      {servicesData.map(service => {
-        const { id, title } = service;
+      <article className={cn('flex flex-col')}>
+        {servicesData.map(service => {
+          const { id, title } = service;
 
-        return <Link href={`/services/${id}`}>{title}</Link>;
-      })}
+          return <Link href={`/services/${id}`}>{title}</Link>;
+        })}
+      </article>
     </section>
   );
 };
