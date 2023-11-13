@@ -13,7 +13,10 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
 }) => {
   const { serviceId } = params;
 
-  const currentService = servicesData.find(ser => ser.id === +serviceId);
+  const currentService = servicesData.groups
+    .flat()
+    .flatMap(group => group.services)
+    .find(service => service.id === +serviceId);
 
   const SectionLoader: FC = () => {
     return (

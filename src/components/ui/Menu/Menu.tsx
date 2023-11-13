@@ -7,6 +7,7 @@ import { FC, useEffect, useState } from 'react';
 
 import MenuOverlay from '@/src/components/screens/MenuOverlay/MenuOverlay';
 import Button from '@/src/components/ui/Button/Button';
+import CustomLink from '@/src/components/ui/CustomLink/CustomLink';
 
 import styles from './Menu.module.scss';
 import type { MenuProps } from './Menu.props';
@@ -26,7 +27,7 @@ const Menu: FC<MenuProps> = ({}) => {
 
   return (
     <div className={cn(styles.menuWrapper, 'relative')}>
-      <Link href={'/settings'}>
+      <CustomLink href={'/settings'}>
         <Button variant={'headerRound'} className={cn(styles.menuButton)}>
           <svg
             viewBox='0 0 31 30'
@@ -39,7 +40,7 @@ const Menu: FC<MenuProps> = ({}) => {
             />
           </svg>
         </Button>
-      </Link>
+      </CustomLink>
 
       <Button
         variant={'headerRound'}
