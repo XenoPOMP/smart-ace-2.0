@@ -40,11 +40,11 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
 
       <div>
         <header>
-          <h2 className={cn('text-[1.25em]')}>
+          <h3 className={cn('text-[1.25em]')}>
             <strong>
               <TextOverflow text={name ?? 'Аноним'} />
             </strong>
-          </h2>
+          </h3>
         </header>
 
         <p

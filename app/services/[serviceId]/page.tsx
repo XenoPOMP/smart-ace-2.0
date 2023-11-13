@@ -3,12 +3,17 @@ import cn from 'classnames';
 import { FC, Suspense } from 'react';
 
 import Loader from '@/src/components/ui/Loader/Loader';
+import { servicesData } from '@/src/data/services.data';
 import CommentSection from '@/src/sections/CommentSection/CommentSection';
+
+import styles from './ServiceWithIdPage.module.scss';
 
 const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
   params,
 }) => {
   const { serviceId } = params;
+
+  const currentService = servicesData.find(ser => ser.id === +serviceId);
 
   const SectionLoader: FC = () => {
     return (
@@ -27,11 +32,15 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
 
   return (
     <>
-      <p>ID: {serviceId}</p>
+      <header className={cn(styles.pageHeader)}>
+        <h2>{currentService?.title}</h2>
+      </header>
 
       <Suspense fallback={<SectionLoader />}>
         <CommentSection className={cn('mt-[1em]')} serviceId={serviceId} />
       </Suspense>
+
+      <footer>Footer here</footer>
     </>
   );
 };
