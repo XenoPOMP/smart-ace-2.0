@@ -3,7 +3,6 @@ import { FC } from 'react';
 
 import { servicesData } from '@/src/data/services.data';
 
-import styles from './CommentBlock.module.scss';
 import type { CommentBlockProps } from './CommentBlock.props';
 
 const CommentBlock: FC<CommentBlockProps> = ({ comment }) => {
@@ -13,23 +12,23 @@ const CommentBlock: FC<CommentBlockProps> = ({ comment }) => {
 
   return (
     <div className={cn('mb-[1em]')}>
-      <p>
+      <div>
         Comment with ID{' '}
         <b>
           <i>{id}</i>
         </b>
-      </p>
+      </div>
 
-      <p>
+      <div>
         Written by{' '}
         <b>
           <i>
             {name} ({uuid ?? 'NO_UUID'})
           </i>
         </b>
-      </p>
+      </div>
 
-      <p>
+      <div>
         <img
           src={generatedAvatarPath}
           alt={`${name}\`s avatar`}
@@ -37,16 +36,16 @@ const CommentBlock: FC<CommentBlockProps> = ({ comment }) => {
             width: 'min(25%, 2em)',
           }}
         />
-      </p>
+      </div>
 
-      <p>{text}</p>
+      <div>{text}</div>
 
-      <p>
+      <div>
         Referred to service{' '}
         {servicesData.find(ser => ser.id === serviceId)?.title}
-      </p>
+      </div>
 
-      <p>Rating: {rating} / 5</p>
+      <div>Rating: {rating} / 5</div>
     </div>
   );
 };
