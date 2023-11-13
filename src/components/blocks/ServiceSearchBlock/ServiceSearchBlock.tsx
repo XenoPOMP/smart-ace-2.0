@@ -36,7 +36,7 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
               {group.services.map(service => {
                 const { id, title, version } = service;
 
-                const isNew = currentVersion === version;
+                const isNew = version >= currentVersion;
 
                 return (
                   <CustomLink
