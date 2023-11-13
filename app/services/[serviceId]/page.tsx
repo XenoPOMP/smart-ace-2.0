@@ -34,6 +34,17 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
     <>
       <header className={cn(styles.pageHeader)}>
         <h2>{currentService?.title}</h2>
+
+        {currentService?.desc && (
+          <p
+            className={cn('text-service-title max-w-[100%]')}
+            style={{
+              lineHeight: 'normal',
+            }}
+          >
+            {currentService.desc}
+          </p>
+        )}
       </header>
 
       <Suspense fallback={<SectionLoader />}>
