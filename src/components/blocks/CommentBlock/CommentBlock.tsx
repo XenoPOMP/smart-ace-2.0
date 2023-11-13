@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { FC } from 'react';
 import TextOverflow from 'react-text-overflow';
 
+import Rating from '@/src/components/ui/Rating/Rating';
 import { servicesData } from '@/src/data/services.data';
 
 import styles from './CommentBlock.module.scss';
@@ -52,7 +53,11 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
         </p>
       </div>
 
-      <aside>Rating: {rating} / 5</aside>
+      <aside
+        className={cn('flex justify-center items-center h-full max-h-[4em]')}
+      >
+        <Rating rating={rating} />
+      </aside>
     </article>
   );
 };
