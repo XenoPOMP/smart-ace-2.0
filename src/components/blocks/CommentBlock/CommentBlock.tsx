@@ -5,18 +5,22 @@ import TextOverflow from 'react-text-overflow';
 
 import Rating from '@/src/components/ui/Rating/Rating';
 import { servicesData } from '@/src/data/services.data';
+import { isDev } from '@/src/utils/isDev';
 
 import styles from './CommentBlock.module.scss';
 import type { CommentBlockProps } from './CommentBlock.props';
 
 const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
   comment,
+  sessionId,
   className,
   ...props
 }) => {
   const { id, name, comment: text, rating, serviceId, uuid } = comment;
 
   const generatedAvatarPath = `https://api.dicebear.com/7.x/identicon/svg?seed=${name}`;
+
+  const canBeChanged = uuid === sessionId;
 
   return (
     <article className={cn('', styles.commentBlock, className)} {...props}>
@@ -51,6 +55,26 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
         >
           {text}
         </p>
+
+        {isDev() && (
+          <footer className={cn('text-[.75em] mt-[1em]')}>
+            <h3>
+              <b>Dev info</b>
+            </h3>
+
+            <div>
+              Author ID: <b>{uuid ?? 'None'}</b>
+            </div>
+
+            <div>
+              Session ID: <b>{sessionId}</b>
+            </div>
+
+            <div>
+              Can be changed: <b>{canBeChanged ? 'True' : 'False'}</b>
+            </div>
+          </footer>
+        )}
       </div>
 
       <aside

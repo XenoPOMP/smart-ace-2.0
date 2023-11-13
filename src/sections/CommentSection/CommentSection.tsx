@@ -1,6 +1,7 @@
 import { AsyncFC, AsyncVariableFC } from '@xenopomp/advanced-types';
 import axios from 'axios';
 import cn from 'classnames';
+import { randomUUID } from 'crypto';
 import { FC } from 'react';
 
 import CommentBlock from '@/src/components/blocks/CommentBlock/CommentBlock';
@@ -19,20 +20,24 @@ const CommentSection: AsyncVariableFC<
     `${process.env.API_URL}/comments?${createQueryString({ serviceId })}`
   );
 
+  const sessionId = randomUUID();
+
   return (
-    <section {...props}>
-      {comments.data.length === 0 ? (
-        <>No comments yet</>
-      ) : (
-        comments.data.map(comment => {
-          return (
-            <>
-              <CommentBlock comment={comment} />
-            </>
-          );
-        })
-      )}
-    </section>
+    <>
+      <section {...props}>
+        {comments.data.length === 0 ? (
+          <>No comments yet</>
+        ) : (
+          comments.data.map(comment => {
+            return (
+              <>
+                <CommentBlock comment={comment} sessionId={sessionId} />
+              </>
+            );
+          })
+        )}
+      </section>
+    </>
   );
 };
 
