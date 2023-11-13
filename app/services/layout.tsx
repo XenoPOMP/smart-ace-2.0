@@ -13,7 +13,7 @@ const ServicePageLayout: FC<PropsWith<'children', {}>> = ({ children }) => {
       className={cn(styles.servicePageWrapper)}
     >
       <PageWithPatch.Aside className={cn(styles.searchBlock)}>
-        <ServiceSearchBlock />
+        <ServiceSearchBlock linkTagStyle={'alignLeft'} />
       </PageWithPatch.Aside>
 
       <PageWithPatch.Patch />
