@@ -1,6 +1,8 @@
 import { AsyncFC, WithParams } from '@xenopomp/advanced-types';
-import { Suspense } from 'react';
+import cn from 'classnames';
+import { FC, Suspense } from 'react';
 
+import Loader from '@/src/components/ui/Loader/Loader';
 import CommentSection from '@/src/sections/CommentSection/CommentSection';
 
 const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
@@ -8,11 +10,26 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
 }) => {
   const { serviceId } = params;
 
+  const SectionLoader: FC = () => {
+    return (
+      <div
+        className={cn(
+          'flex w-full justify-center items-center text-service-font'
+        )}
+        style={{
+          marginTop: 'calc(var(--global-padding) / 4)',
+        }}
+      >
+        <Loader />
+      </div>
+    );
+  };
+
   return (
     <>
       <p>ID: {serviceId}</p>
 
-      <Suspense fallback={<>Loading comments...</>}>
+      <Suspense fallback={<SectionLoader />}>
         <CommentSection serviceId={serviceId} />
       </Suspense>
     </>
