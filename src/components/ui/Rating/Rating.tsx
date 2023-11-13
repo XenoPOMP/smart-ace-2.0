@@ -67,6 +67,9 @@ const Rating: VariableFC<
         y='0'
         width={'100%'}
         height='100%'
+        initial={{
+          width: '0%',
+        }}
         animate={{
           width: ['0%', `${(processRating(rating) / 5) * 100}%`],
         }}

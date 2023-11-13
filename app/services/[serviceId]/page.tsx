@@ -30,7 +30,7 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
       <p>ID: {serviceId}</p>
 
       <Suspense fallback={<SectionLoader />}>
-        <CommentSection serviceId={serviceId} />
+        <CommentSection className={cn('mt-[1em]')} serviceId={serviceId} />
       </Suspense>
     </>
   );
