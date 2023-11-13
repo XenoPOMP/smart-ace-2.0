@@ -1,0 +1,12 @@
+article.commentBlock {
+  @apply bg-head-button-back py-[.75em] px-[1em]
+         rounded-[1em] text-service-font;
+
+  &:not(:last-of-type) {
+    @apply mb-[1em];
+  }
+
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: 1em;
+}
