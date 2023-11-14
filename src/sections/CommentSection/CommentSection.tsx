@@ -15,23 +15,33 @@ const CommentSection: AsyncVariableFC<
   'section',
   CommentSectionProps,
   'children'
-> = async ({ serviceId, ...props }) => {
-  const comments = await axios.get<Array<IComment>>(
-    `${process.env.API_URL}/comments?${createQueryString({
-      serviceId,
-      sortByDate: 'desc',
-    })}`
-  );
+> = async ({ serviceId, className, ...props }) => {
+  let comments: Array<IComment>;
+
+  try {
+    comments = (
+      await axios.get<Array<IComment>>(
+        `${process.env.API_URL}/comments?${createQueryString({
+          serviceId,
+          sortByDate: 'desc',
+        })}`
+      )
+    ).data;
+  } catch (e) {
+    comments = [];
+  }
 
   const sessionId = randomUUID();
 
   return (
     <>
-      <section {...props}>
-        {comments.data.length === 0 ? (
-          <>No comments yet</>
+      <section className={cn('', className)} {...props}>
+        {comments.length === 0 ? (
+          <article className={cn('text-center text-service-title mb-[1em]')}>
+            Здесь пока нет комментариев
+          </article>
         ) : (
-          comments.data.map(comment => {
+          comments.map(comment => {
             return (
               <>
                 <CommentBlock comment={comment} sessionId={sessionId} />

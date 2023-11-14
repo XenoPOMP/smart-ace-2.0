@@ -14,11 +14,17 @@ const ServiceRating: AsyncVariableFC<
   ServiceRatingProps,
   'rating'
 > = async ({ id, ...props }) => {
-  const averageRating: number = (
-    await axios.get<number>(
-      `${process.env.API_URL}/services/rating/average/${id}`
-    )
-  ).data;
+  let averageRating: number;
+
+  try {
+    averageRating = (
+      await axios.get<number>(
+        `${process.env.API_URL}/services/rating/average/${id}`
+      )
+    ).data;
+  } catch (e) {
+    return 'N/A';
+  }
 
   return (
     <>
