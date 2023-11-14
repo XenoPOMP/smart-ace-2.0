@@ -17,7 +17,10 @@ const CommentSection: AsyncVariableFC<
   'children'
 > = async ({ serviceId, ...props }) => {
   const comments = await axios.get<Array<IComment>>(
-    `${process.env.API_URL}/comments?${createQueryString({ serviceId })}`
+    `${process.env.API_URL}/comments?${createQueryString({
+      serviceId,
+      sortByDate: 'desc',
+    })}`
   );
 
   const sessionId = randomUUID();
