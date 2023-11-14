@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { FC } from 'react';
 import TextOverflow from 'react-text-overflow';
 
+import LoadingRect from '@/src/components/loaders/LoadingRect/LoadingRect';
 import Rating from '@/src/components/ui/Rating/Rating';
 import { servicesData } from '@/src/data/services.data';
 import { isDev } from '@/src/utils/isDev';
@@ -14,6 +15,8 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
   comment,
   sessionId,
   className,
+  variant = 'default',
+  delay = 0,
   ...props
 }) => {
   const { id, name, comment: text, rating, serviceId, uuid } = comment;
@@ -29,22 +32,44 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
           width: 'max-content',
         }}
       >
-        <img
-          src={generatedAvatarPath}
-          alt={`${name}\`s avatar`}
-          style={{
-            width: '2.5em',
-          }}
-        />
+        {variant === 'default' ? (
+          <>
+            <img
+              src={generatedAvatarPath}
+              alt={`${name}\`s avatar`}
+              style={{
+                width: '2.5em',
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <LoadingRect
+              className={cn('w-[2.5em] aspect-square bg-head-icon-color')}
+            />
+          </>
+        )}
       </aside>
 
       <div>
         <header>
-          <h3 className={cn('text-[1.25em]')}>
-            <strong>
-              <TextOverflow text={name ?? 'Аноним'} />
-            </strong>
-          </h3>
+          {variant === 'default' ? (
+            <>
+              <h3 className={cn('text-[1.25em]')}>
+                <strong>
+                  <TextOverflow text={name ?? 'Аноним'} />
+                </strong>
+              </h3>
+            </>
+          ) : (
+            <>
+              <LoadingRect
+                className={cn(
+                  'w-[10ch] h-[1em] aspect-square bg-head-icon-color'
+                )}
+              />
+            </>
+          )}
         </header>
 
         <p
@@ -56,7 +81,7 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
           {text}
         </p>
 
-        {isDev() && (
+        {isDev() && variant === 'default' && (
           <footer className={cn('text-[.75em] mt-[1em]')}>
             <h3>
               <b>Dev info</b>
@@ -82,9 +107,17 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
       </div>
 
       <aside
-        className={cn('flex justify-center items-center h-full max-h-[4em]')}
+        className={cn(
+          'flex flex-col justify-center items-center h-full max-h-[4em]'
+        )}
       >
-        <Rating rating={rating} />
+        {variant === 'default' ? (
+          <Rating rating={rating} />
+        ) : (
+          <LoadingRect
+            className={cn('w-[5ch] h-[1em] aspect-square bg-head-icon-color')}
+          />
+        )}
       </aside>
     </article>
   );

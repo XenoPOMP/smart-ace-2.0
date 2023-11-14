@@ -2,6 +2,7 @@ import { AsyncFC, WithParams } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { FC, Suspense } from 'react';
 
+import CommentLoader from '@/src/components/loaders/CommentLoader/CommentLoader';
 import Loader from '@/src/components/ui/Loader/Loader';
 import { servicesData } from '@/src/data/services.data';
 import CommentSection from '@/src/sections/CommentSection/CommentSection';
@@ -55,7 +56,15 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
         <ServiceCardGrid service={currentService} />
       </Suspense>
 
-      <Suspense fallback={<SectionLoader />}>
+      <Suspense
+        fallback={
+          <>
+            <CommentLoader />
+            <CommentLoader />
+            <CommentLoader />
+          </>
+        }
+      >
         <CommentSection className={cn('mt-[1em]')} serviceId={serviceId} />
       </Suspense>
 

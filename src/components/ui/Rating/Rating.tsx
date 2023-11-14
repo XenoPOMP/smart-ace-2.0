@@ -1,15 +1,14 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 import styles from './Rating.module.scss';
 import type { RatingProps } from './Rating.props';
 
-const Rating: VariableFC<
-  'svg',
-  RatingProps,
-  'children' | 'fill' | 'viewBox' | 'xmlns'
-> = ({ className, rating, ...props }) => {
+const Rating: VariableFC<typeof Fragment, RatingProps, 'children'> = ({
+  rating,
+  ...props
+}) => {
   const processRating = (): number => {
     if (rating < 1) {
       rating = 1;

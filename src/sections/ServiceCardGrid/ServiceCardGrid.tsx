@@ -1,10 +1,11 @@
 import { AsyncVariableFC } from '@xenopomp/advanced-types';
 import { isNullOrUndefined } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, Suspense } from 'react';
 
 import Loader from '@/src/components/ui/Loader/Loader';
 import ServiceCard from '@/src/components/ui/ServiceCard/ServiceCard';
+import ServiceRating from '@/src/components/ui/ServiceRating/ServiceRating';
 import { Hardness } from '@/src/interfaces/Service.interface';
 
 import styles from './ServiceCardGrid.module.scss';
@@ -55,7 +56,7 @@ const ServiceCardGrid: AsyncVariableFC<
           </ServiceCard>
 
           <ServiceCard title={'Рейтинг'} className={cn(styles.card)}>
-            <Loader />
+            <ServiceRating id={service.id} />
           </ServiceCard>
         </section>
       )}
