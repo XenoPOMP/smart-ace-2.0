@@ -63,6 +63,10 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
             </h3>
 
             <div>
+              Rating: <b>{rating}</b>
+            </div>
+
+            <div>
               Author ID: <b>{uuid ?? 'None'}</b>
             </div>
 
