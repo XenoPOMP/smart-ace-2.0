@@ -9,6 +9,12 @@ type ReloadPayload = {
   serviceId: string;
 };
 
+/**
+ * This server action fetches comments from
+ * backend.
+ *
+ * @param serviceId
+ */
 export const reloadComments = async ({ serviceId }: ReloadPayload) => {
   let comments: Array<IComment> = [];
 

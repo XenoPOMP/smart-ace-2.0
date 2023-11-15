@@ -4,11 +4,13 @@ import { VariableFC } from '@xenopomp/advanced-types';
 import { isUndefined } from '@xenopomp/advanced-utils';
 import axios, { AxiosResponse } from 'axios';
 import cn from 'classnames';
+import { AlertTriangle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import Button from '@/src/components/ui/Button/Button';
 import Loader from '@/src/components/ui/Loader/Loader';
+import logo from '@/src/components/ui/Logo/Logo';
 import Rating from '@/src/components/ui/Rating/Rating';
 import useBoolean from '@/src/hooks/useBoolean';
 import { CommentPatchType } from '@/src/types/CommentPatchType';
@@ -27,17 +29,17 @@ const CreateCommentSection: VariableFC<
   const [rating, setRating] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   const [isSending, toggleIsSending, setIsSending] = useBoolean(false);
+  const [isError, toggleIsError, setIsError] = useBoolean(false);
 
   const createNewComment = () => {
     setIsSending(true);
+    setIsError(false);
 
     if (!isUndefined(commentRefetchCallback)) {
       commentRefetchCallback().finally(() => {
         setIsSending(false);
       });
     }
-
-    return;
 
     axios
       .patch<unknown, AxiosResponse<unknown, unknown>, CommentPatchType>(
@@ -51,7 +53,9 @@ const CreateCommentSection: VariableFC<
         }
       )
       .then(() => {})
-      .catch(err => {})
+      .catch(err => {
+        setIsError(true);
+      })
       .finally(() => {
         setIsSending(false);
       });
@@ -61,7 +65,7 @@ const CreateCommentSection: VariableFC<
     <section className={cn(styles.createComment, className)} {...props}>
       {isDev() && (
         <div
-          className={cn('px-[1em] pt-[1em] pb-[1em]')}
+          className={cn('px-[1em] pt-[1em]')}
           style={{
             lineHeight: '125%',
             wordWrap: 'break-word',
@@ -81,7 +85,7 @@ const CreateCommentSection: VariableFC<
       )}
 
       <TextareaAutosize
-        className={cn(styles.inputField, '!py-0 !min-h-0 font-bold')}
+        className={cn(styles.inputField, '!py-0 !min-h-0 font-bold !pt-[1em]')}
         style={{}}
         autoFocus
         placeholder={'Ваше имя'}
@@ -102,11 +106,19 @@ const CreateCommentSection: VariableFC<
       />
 
       <div className={cn('mx-[1em]')}>
-        <Rating rating={rating} interactive hideNumbers hideStars={false} />
+        <Rating
+          rating={rating}
+          interactive
+          hideNumbers
+          hideStars={false}
+          changeRating={newRating => {
+            setRating(newRating);
+          }}
+        />
       </div>
 
       <Button
-        variant={'secondary'}
+        variant={isError ? 'error' : 'secondary'}
         className={cn(
           'font-semibold py-[.45em] px-[.9em] text-[.75em] rounded-[.65em]',
           'relative',
@@ -121,13 +133,25 @@ const CreateCommentSection: VariableFC<
           <div
             className={cn(
               'absolute w-full h-full flex justify-center items-center top-0 left-0',
-              !isSending && 'opacity-0'
+              (!isSending || isError) && 'opacity-0'
             )}
           >
             <Loader className={cn('text-current')} />
           </div>
 
-          <span className={cn(isSending && 'opacity-0')}>Отправить</span>
+          <span className={cn(isSending && 'opacity-0', isError && 'hidden')}>
+            Отправить
+          </span>
+
+          <div
+            className={cn(
+              !isError && 'hidden',
+              'flex gap-[.35em] items-center'
+            )}
+          >
+            <AlertTriangle className={cn('h-[1.25em]')} />
+            Ошибка
+          </div>
         </>
       </Button>
     </section>

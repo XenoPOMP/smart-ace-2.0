@@ -30,6 +30,10 @@ const Button: VariableFC<'button', ButtonProps> = ({
     secondary: {
       className: cn(styles.secondary),
     },
+
+    error: {
+      className: 'bg-red-500 text-white',
+    },
   };
 
   return (
