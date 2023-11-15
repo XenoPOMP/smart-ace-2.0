@@ -17,20 +17,7 @@ const CommentSection: AsyncVariableFC<
   CommentSectionProps,
   'children'
 > = async ({ serviceId, className, sessionId, ...props }) => {
-  let comments: Array<IComment>;
-
-  try {
-    comments = (
-      await axios.get<Array<IComment>>(
-        `${process.env.API_URL}/comments?${createQueryString({
-          serviceId,
-          sortByDate: 'desc',
-        })}`
-      )
-    ).data;
-  } catch (e) {
-    comments = [];
-  }
+  let comments: Array<IComment> = [];
 
   const reloadComments = async () => {
     try {
@@ -46,6 +33,8 @@ const CommentSection: AsyncVariableFC<
       comments = [];
     }
   };
+
+  await reloadComments();
 
   return (
     <>
