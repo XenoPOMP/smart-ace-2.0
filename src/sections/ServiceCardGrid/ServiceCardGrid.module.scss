@@ -1,11 +1,21 @@
 @import "src/styles/templates";
 
 section.serviceGrid {
+  --column-count: 4;
+
   @apply mt-[2.25em];
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--column-count), 1fr);
   gap: calc(var(--global-padding) / 2);
+
+  @media (max-width: 1396px) {
+    --column-count: 2;
+  }
+
+  @media (max-width: 900px) {
+    --column-count: 1;
+  }
 
   article.card {
     span {
