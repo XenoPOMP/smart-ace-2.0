@@ -5,7 +5,7 @@ import { isUndefined } from '@xenopomp/advanced-utils';
 import axios, { AxiosResponse } from 'axios';
 import cn from 'classnames';
 import { AlertTriangle } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import Button from '@/src/components/ui/Button/Button';
@@ -61,6 +61,12 @@ const CreateCommentSection: VariableFC<
       });
   };
 
+  const sharedTextareaProps: ComponentProps<typeof TextareaAutosize> = {
+    autoFocus: true,
+    cacheMeasurements: true,
+    maxRows: Infinity,
+  };
+
   return (
     <section className={cn(styles.createComment, className)} {...props}>
       {isDev() && (
@@ -87,22 +93,22 @@ const CreateCommentSection: VariableFC<
       <TextareaAutosize
         className={cn(styles.inputField, '!py-0 !min-h-0 font-bold !pt-[1em]')}
         style={{}}
-        autoFocus
         placeholder={'Ваше имя'}
         content={authorName}
         onChange={ev => {
           setAuthorName(ev.currentTarget.value);
         }}
+        {...sharedTextareaProps}
       />
 
       <TextareaAutosize
         className={cn(styles.inputField, '!pt-[.5em]')}
-        autoFocus
         placeholder={'Напишите ваш комментарий'}
         content={comment}
         onChange={ev => {
           setComment(ev.currentTarget.value);
         }}
+        {...sharedTextareaProps}
       />
 
       <div className={cn('mx-[1em]')}>
