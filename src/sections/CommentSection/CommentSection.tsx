@@ -19,22 +19,7 @@ const CommentSection: AsyncVariableFC<
 > = async ({ serviceId, className, sessionId, ...props }) => {
   let comments: Array<IComment> = [];
 
-  const reloadComments = async () => {
-    try {
-      comments = (
-        await axios.get<Array<IComment>>(
-          `${process.env.API_URL}/comments?${createQueryString({
-            serviceId,
-            sortByDate: 'desc',
-          })}`
-        )
-      ).data;
-    } catch (e) {
-      comments = [];
-    }
-  };
-
-  await reloadComments();
+  // await reloadComments();
 
   return (
     <>
