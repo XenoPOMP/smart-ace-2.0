@@ -51,7 +51,7 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
         )}
       </aside>
 
-      <div>
+      <div className={cn(styles.main)}>
         <header>
           {variant === 'default' ? (
             <>
@@ -108,7 +108,8 @@ const CommentBlock: VariableFC<'article', CommentBlockProps, 'children'> = ({
 
       <aside
         className={cn(
-          'flex flex-col justify-center items-center h-full max-h-[4em]'
+          'flex flex-col justify-center items-center h-full max-h-[4em]',
+          styles.stars
         )}
       >
         {variant === 'default' ? (
