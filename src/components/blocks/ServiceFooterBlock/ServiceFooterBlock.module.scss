@@ -1,0 +1,5 @@
+footer.service {
+  padding: calc(var(--global-padding) / 2) 0;
+  display: flex;
+  gap: calc(var(--global-padding) / 2);
+}

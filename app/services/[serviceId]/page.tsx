@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { randomUUID } from 'crypto';
 import { FC, Suspense } from 'react';
 
+import ServiceFooterBlock from '@/src/components/blocks/ServiceFooterBlock/ServiceFooterBlock';
 import CommentLoader from '@/src/components/loaders/CommentLoader/CommentLoader';
 import CreateCommentSection from '@/src/components/ui/CreateCommentSection/CreateCommentSection';
 import Loader from '@/src/components/ui/Loader/Loader';
@@ -24,21 +25,6 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
     .find(service => service.id === +serviceId);
 
   const randomId = randomUUID();
-
-  const SectionLoader: FC = () => {
-    return (
-      <div
-        className={cn(
-          'flex w-full justify-center items-center text-service-font'
-        )}
-        style={{
-          marginTop: 'calc(var(--global-padding) / 4)',
-        }}
-      >
-        <Loader />
-      </div>
-    );
-  };
 
   return (
     <>
@@ -81,7 +67,7 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
         />
       </Suspense>
 
-      <footer>Footer here</footer>
+      <ServiceFooterBlock serviceId={+serviceId} />
     </>
   );
 };
