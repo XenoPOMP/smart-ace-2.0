@@ -31,6 +31,8 @@ const CreateCommentSection: VariableFC<
   const createNewComment = () => {
     setIsSending(true);
 
+    return;
+
     axios
       .patch<unknown, AxiosResponse<unknown, unknown>, CommentPatchType>(
         `${process.env.API_URL}/comments`,
