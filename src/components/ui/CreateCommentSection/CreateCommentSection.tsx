@@ -21,7 +21,7 @@ const CreateCommentSection: VariableFC<
   'section',
   CreateCommentSectionProps,
   'children'
-> = ({ className, serviceId, uuid, ...props }) => {
+> = ({ className, serviceId, uuid, commentRefetchCallback, ...props }) => {
   const [authorName, setAuthorName] = useState<string | undefined>(undefined);
   const [comment, setComment] = useState<string | undefined>(undefined);
   const [rating, setRating] = useState<1 | 2 | 3 | 4 | 5>(1);
@@ -30,6 +30,12 @@ const CreateCommentSection: VariableFC<
 
   const createNewComment = () => {
     setIsSending(true);
+
+    if (!isUndefined(commentRefetchCallback)) {
+      commentRefetchCallback().finally(() => {
+        setIsSending(false);
+      });
+    }
 
     return;
 
