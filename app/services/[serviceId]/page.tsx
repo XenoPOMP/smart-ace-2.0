@@ -1,8 +1,10 @@
 import { AsyncFC, WithParams } from '@xenopomp/advanced-types';
 import cn from 'classnames';
+import { randomUUID } from 'crypto';
 import { FC, Suspense } from 'react';
 
 import CommentLoader from '@/src/components/loaders/CommentLoader/CommentLoader';
+import CreateCommentSection from '@/src/components/ui/CreateCommentSection/CreateCommentSection';
 import Loader from '@/src/components/ui/Loader/Loader';
 import { servicesData } from '@/src/data/services.data';
 import CommentSection from '@/src/sections/CommentSection/CommentSection';
@@ -12,6 +14,7 @@ import styles from './ServiceWithIdPage.module.scss';
 
 const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
   params,
+  ...props
 }) => {
   const { serviceId } = params;
 
@@ -19,6 +22,8 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
     .flat()
     .flatMap(group => group.services)
     .find(service => service.id === +serviceId);
+
+  const randomId = randomUUID();
 
   const SectionLoader: FC = () => {
     return (
@@ -56,6 +61,12 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
         <ServiceCardGrid service={currentService} />
       </Suspense>
 
+      <CreateCommentSection
+        className={cn('mt-[1em]')}
+        serviceId={+serviceId}
+        uuid={randomId}
+      />
+
       <Suspense
         fallback={
           <>
@@ -65,7 +76,11 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
           </>
         }
       >
-        <CommentSection className={cn('mt-[1em]')} serviceId={serviceId} />
+        <CommentSection
+          className={cn('mt-[1em]')}
+          serviceId={serviceId}
+          sessionId={randomId}
+        />
       </Suspense>
 
       <footer>Footer here</footer>

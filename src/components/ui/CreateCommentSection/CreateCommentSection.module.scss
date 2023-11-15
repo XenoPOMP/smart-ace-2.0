@@ -1,0 +1,33 @@
+@import "src/styles/templates";
+
+section.createComment {
+  @apply bg-head-button-back
+         rounded-[1em] flex flex-col gap-[.5em];
+
+  width: 100%;
+  height: auto;
+  align-items: start;
+
+  textarea.inputField {
+    @apply px-[1em] py-[1em] bg-transparent w-full
+           text-service-font;
+
+    line-height: 130%;
+    min-height: 3em;
+
+    &::placeholder {
+      @apply text-head-icon-color;
+    }
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  button.submit {
+    @apply mx-[1em] mb-[1em] mt-[.75em];
+
+    width: max-content;
+  }
+}

@@ -5,6 +5,7 @@ import { randomUUID } from 'crypto';
 import { FC } from 'react';
 
 import CommentBlock from '@/src/components/blocks/CommentBlock/CommentBlock';
+import CreateCommentSection from '@/src/components/ui/CreateCommentSection/CreateCommentSection';
 import { IComment } from '@/src/interfaces/Comment.interface';
 import { createQueryString } from '@/src/utils/createQueryString';
 
@@ -15,7 +16,7 @@ const CommentSection: AsyncVariableFC<
   'section',
   CommentSectionProps,
   'children'
-> = async ({ serviceId, className, ...props }) => {
+> = async ({ serviceId, className, sessionId, ...props }) => {
   let comments: Array<IComment>;
 
   try {
@@ -31,7 +32,20 @@ const CommentSection: AsyncVariableFC<
     comments = [];
   }
 
-  const sessionId = randomUUID();
+  const reloadComments = async () => {
+    try {
+      comments = (
+        await axios.get<Array<IComment>>(
+          `${process.env.API_URL}/comments?${createQueryString({
+            serviceId,
+            sortByDate: 'desc',
+          })}`
+        )
+      ).data;
+    } catch (e) {
+      comments = [];
+    }
+  };
 
   return (
     <>

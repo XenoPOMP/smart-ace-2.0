@@ -6,4 +6,6 @@ export interface CommentSectionProps
   extends Pick<
     ComponentProps<typeof ServiceWithIdPage>['params'],
     'serviceId'
-  > {}
+  > {
+  sessionId: string;
+}

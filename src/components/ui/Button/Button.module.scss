@@ -1,6 +1,10 @@
 @import "src/styles/templates";
 
 button.appButton {
+  &.blocked {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
   &.header {
     &.round {
       @extend %flexCenter;
@@ -14,5 +18,9 @@ button.appButton {
       aspect-ratio: 1;
       border-radius: 50%;
     }
+  }
+
+  &.secondary {
+    @apply bg-service-foot-button-back text-service-foot-button-font;
   }
 }

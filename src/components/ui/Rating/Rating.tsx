@@ -1,5 +1,6 @@
-import { VariableFC } from '@xenopomp/advanced-types';
+import { AsyncVariableFC, VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { FC, Fragment } from 'react';
 
 import styles from './Rating.module.scss';
@@ -7,19 +8,13 @@ import type { RatingProps } from './Rating.props';
 
 const Rating: VariableFC<typeof Fragment, RatingProps, 'children'> = ({
   rating,
+  hideNumbers = false,
+  hideStars = true,
+  interactive = false,
+  changeRating,
   ...props
 }) => {
-  const processRating = (): number => {
-    if (rating < 1) {
-      rating = 1;
-    }
-
-    if (rating > 5) {
-      rating = 5;
-    }
-
-    return (rating / 5) * 100;
-  };
+  const percent = (rating / 5) * 100;
 
   const Stars: FC = () => {
     return (
@@ -63,10 +58,10 @@ const Rating: VariableFC<typeof Fragment, RatingProps, 'children'> = ({
           maskUnits='userSpaceOnUse'
           x='0'
           y='0'
-          width={`${processRating()}%`}
+          width={`100%`}
           height='100%'
         >
-          <rect height='100%' width={`${100}%`} fill='#D9D9D9' />
+          <rect height={'100%'} width={`${percent}%`} fill='#D9D9D9' />
         </mask>
         <g mask='url(#mask0_80_668)'>
           <path
@@ -99,7 +94,17 @@ const Rating: VariableFC<typeof Fragment, RatingProps, 'children'> = ({
     );
   };
 
-  return <>{rating} / 5</>;
+  return (
+    <>
+      {!hideNumbers && (
+        <div className={cn('')}>
+          <strong>{rating} / 5</strong>
+        </div>
+      )}
+
+      {!hideStars && <Stars />}
+    </>
+  );
 };
 
 export default Rating;
