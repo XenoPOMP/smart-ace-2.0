@@ -55,7 +55,7 @@ const CreateCommentSection: VariableFC<
     <section className={cn(styles.createComment, className)} {...props}>
       {isDev() && (
         <div
-          className={cn('')}
+          className={cn('px-[1em] pt-[1em] pb-[1em]')}
           style={{
             lineHeight: '125%',
             wordWrap: 'break-word',

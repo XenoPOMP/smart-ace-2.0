@@ -61,11 +61,11 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
         <ServiceCardGrid service={currentService} />
       </Suspense>
 
-      <CreateCommentSection
-        className={cn('mt-[1em]')}
-        serviceId={+serviceId}
-        uuid={randomId}
-      />
+      {/*<CreateCommentSection*/}
+      {/*  className={cn('mt-[1em]')}*/}
+      {/*  serviceId={+serviceId}*/}
+      {/*  uuid={randomId}*/}
+      {/*/>*/}
 
       <Suspense
         fallback={

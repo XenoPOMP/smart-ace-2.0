@@ -38,6 +38,12 @@ const CommentSection: AsyncVariableFC<
 
   return (
     <>
+      <CreateCommentSection
+        className={cn('mt-[1em]')}
+        serviceId={+serviceId}
+        uuid={sessionId}
+      />
+
       <section className={cn('', className)} {...props}>
         {comments.length === 0 ? (
           <article className={cn('text-center text-service-title mb-[1em]')}>
