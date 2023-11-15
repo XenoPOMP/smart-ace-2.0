@@ -14,6 +14,7 @@ section.createComment {
 
     line-height: 130%;
     min-height: 3em;
+    resize: none !important;
 
     &::placeholder {
       @apply text-head-icon-color;
