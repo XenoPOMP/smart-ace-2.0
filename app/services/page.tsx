@@ -5,6 +5,7 @@ import { FC } from 'react';
 
 import ServiceSearchBlock from '@/src/components/blocks/ServiceSearchBlock/ServiceSearchBlock';
 import PageWithPatch from '@/src/components/layout/PageWithPatch/PageWithPatch';
+import Loader from '@/src/components/ui/Loader/Loader';
 import { IComment } from '@/src/interfaces/Comment.interface';
 
 import styles from './ServicePage.module.scss';
@@ -14,7 +15,7 @@ const ServicePage: FC<{}> = ({}) => {
   //   `${process.env.API_URL}/comments`
   // );
 
-  return <>Sus</>;
+  return <>Sus with services</>;
 };
 
 export default ServicePage;
