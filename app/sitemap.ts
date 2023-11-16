@@ -29,18 +29,6 @@ const sitemap = (): MetadataRoute.Sitemap => {
               url: `${CANONICAL_URL}/services/${id}`,
               priority: 0.85,
             },
-            {
-              url: `${CANONICAL_URL}/services/${id}/order/1`,
-              priority: 0.8,
-            },
-            {
-              url: `${CANONICAL_URL}/services/${id}/order/2`,
-              priority: 0.8,
-            },
-            {
-              url: `${CANONICAL_URL}/services/${id}/order/3`,
-              priority: 0.8,
-            },
           ]
         );
       });
