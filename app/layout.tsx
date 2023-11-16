@@ -48,8 +48,6 @@ export default function RootLayout({
     <html lang='en'>
       <body className={cn(mainFont.className, styles.appBody)}>
         <Providers>
-          <Header />
-
           {children}
 
           {/*<Footer />*/}

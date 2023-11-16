@@ -27,6 +27,10 @@ const Button: VariableFC<'button', ButtonProps> = ({
       className: cn(styles.header, styles.round),
     },
 
+    header: {
+      className: cn(styles.header),
+    },
+
     secondary: {
       className: cn(styles.secondary),
     },

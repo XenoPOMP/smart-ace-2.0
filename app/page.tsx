@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { Balsamiq_Sans } from 'next/font/google';
 
+import Header from '@/src/components/layout/Header/Header';
 import PageWithPatch from '@/src/components/layout/PageWithPatch/PageWithPatch';
 import FrontCard from '@/src/components/ui/FrontCard/FrontCard';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer';
@@ -14,33 +15,40 @@ const specialFont = Balsamiq_Sans({
 
 export default function Home() {
   return (
-    <PageWithPatch
-      proportion={'4fr max-content 585px'}
-      className={cn(styles.pageWrapper)}
-    >
-      <PageWithPatch.Main className={cn(styles.mainPage)} hasTopPadding={false}>
-        <h1 className={cn(specialFont.className)}>
-          Вам нужно что-то особенное?
-        </h1>
+    <>
+      <Header />
 
-        <p>Пожалуйста, посмотрите на наши предложения</p>
-      </PageWithPatch.Main>
+      <PageWithPatch
+        proportion={'4fr max-content 585px'}
+        className={cn(styles.pageWrapper)}
+      >
+        <PageWithPatch.Main
+          className={cn(styles.mainPage)}
+          hasTopPadding={false}
+        >
+          <h1 className={cn(specialFont.className)}>
+            Вам нужно что-то особенное?
+          </h1>
 
-      <PageWithPatch.Patch />
+          <p>Пожалуйста, посмотрите на наши предложения</p>
+        </PageWithPatch.Main>
 
-      <PageWithPatch.Aside className={cn(styles.mainPage)}>
-        <FrontCard
-          title={'Очень важное заявление'}
-          subTitle={'Наше передовое программное обеспечение позволяет вам...'}
-          desc={'Крутота блин реально ихихихихихихихихихихиххх'}
-        />
+        <PageWithPatch.Patch />
 
-        <FrontCard
-          title={'Очень важное заявление'}
-          subTitle={'Наше передовое программное обеспечение позволяет вам...'}
-          desc={'Крутота блин реально ихихихихихихихихихихиххх'}
-        />
-      </PageWithPatch.Aside>
-    </PageWithPatch>
+        <PageWithPatch.Aside className={cn(styles.mainPage)}>
+          <FrontCard
+            title={'Очень важное заявление'}
+            subTitle={'Наше передовое программное обеспечение позволяет вам...'}
+            desc={'Крутота блин реально ихихихихихихихихихихиххх'}
+          />
+
+          <FrontCard
+            title={'Очень важное заявление'}
+            subTitle={'Наше передовое программное обеспечение позволяет вам...'}
+            desc={'Крутота блин реально ихихихихихихихихихихиххх'}
+          />
+        </PageWithPatch.Aside>
+      </PageWithPatch>
+    </>
   );
 }

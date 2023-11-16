@@ -1,0 +1,12 @@
+@import "src/styles/templates";
+
+.wrapper {
+  main.order {
+    @extend %scrollable;
+
+    grid-column: span 2;
+    padding-left: var(--global-padding);
+    padding-right: var(--global-padding);
+    padding-bottom: var(--global-padding);
+  }
+}
