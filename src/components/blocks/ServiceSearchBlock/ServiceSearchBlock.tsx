@@ -44,6 +44,7 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
                     className={cn(
                       `flex ${tagStyle[linkTagStyle]} flex-wrap gap-x-[.4em]`
                     )}
+                    applyStyles={false}
                   >
                     {title}{' '}
                     {isNew && (

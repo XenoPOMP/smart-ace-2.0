@@ -27,7 +27,7 @@ const Menu: FC<MenuProps> = ({}) => {
 
   return (
     <div className={cn(styles.menuWrapper, 'relative')}>
-      <CustomLink href={'/settings'}>
+      <CustomLink href={'/settings'} applyStyles={false}>
         <Button variant={'headerRound'} className={cn(styles.menuButton)}>
           <svg
             viewBox='0 0 31 30'

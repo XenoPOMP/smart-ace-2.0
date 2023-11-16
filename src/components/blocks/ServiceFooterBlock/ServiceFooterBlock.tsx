@@ -18,6 +18,7 @@ const ServiceFooterBlock: VariableFC<
       <CustomLink
         href={`/order/${serviceId}/stage/1`}
         className={cn('flex-grow')}
+        applyStyles={false}
       >
         <Button
           variant={'secondary'}
