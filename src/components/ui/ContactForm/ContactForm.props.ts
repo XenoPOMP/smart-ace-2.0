@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ComponentProps, useState } from 'react';
+import { ComponentProps, ReactNode, useState } from 'react';
 
 type ReactState<T extends any = any> = {
   state: ReturnType<typeof useState<T>>[0];
@@ -15,8 +15,8 @@ type FormItem = {
 };
 
 export interface ContactFormProps {
-  caption?: string;
-  subCaption?: string;
+  caption?: ReactNode;
+  subCaption?: ReactNode;
   items?: Array<FormItem>;
   links?: Partial<
     Record<'middle' | 'prev' | 'next', ComponentProps<typeof Link>['href']>
