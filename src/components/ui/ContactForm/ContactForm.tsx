@@ -28,10 +28,17 @@ const ContactForm: VariableFC<'form', ContactFormProps, 'children'> = ({
   subCaption,
   items,
   links,
-
   ...props
 }) => {
   const [isFormValid, toggleIsFormValid, setIsFormValid] = useBoolean(true);
+
+  const roles: Record<
+    Defined<ArrayType<Defined<typeof items>>['type']>,
+    ComponentProps<'input'>['role']
+  > = {
+    default: '',
+    email: 'marquee',
+  };
 
   const validateInput = (
     input: string,
@@ -79,11 +86,11 @@ const ContactForm: VariableFC<'form', ContactFormProps, 'children'> = ({
       {...props}
     >
       <header>
-        <h2>{caption}</h2>
+        <h2 className={cn('text-center')}>{caption}</h2>
       </header>
 
       <section className={cn(styles.body)}>
-        <h3>{subCaption}</h3>
+        <h3 className={cn('whitespace-pre text-center')}>{subCaption}</h3>
 
         <article className={cn(styles.items)}>
           {items?.map(
