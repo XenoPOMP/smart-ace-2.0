@@ -38,7 +38,7 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/body-scroll-lock": "^3.1.2",
-    "@xenopomp/advanced-types": "latest",
+    "@xenopomp/advanced-types": "^1.3.9",
     "prettier": "2.8.1"
   }
 }
