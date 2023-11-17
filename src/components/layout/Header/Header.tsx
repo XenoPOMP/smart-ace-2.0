@@ -14,12 +14,20 @@ const Header: VariableFC<'header', HeaderProps, 'children'> = ({
   className,
   hideNav = false,
   hideMenu = false,
+  splashBackground = false,
   ...props
 }) => {
   const hiddenStyle = '!opacity-0 !pointer-events-none';
 
   return (
-    <header className={cn(styles.appHeader, className)} {...props}>
+    <header
+      className={cn(
+        styles.appHeader,
+        splashBackground && 'bg-background-primary',
+        className
+      )}
+      {...props}
+    >
       <UiContainer className={cn(styles.grid)}>
         <article
           className={cn(

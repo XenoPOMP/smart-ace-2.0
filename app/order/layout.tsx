@@ -29,7 +29,7 @@ export const metadata: Metadata = generateMetadata({
 const OrderPageLayout: FC<PropsWith<'children', {}>> = ({ children }) => {
   return (
     <>
-      <Header hideNav hideMenu />
+      <Header hideNav hideMenu splashBackground />
 
       <PageWithPatch proportion={'max-content'} className={cn(styles.wrapper)}>
         <PageWithPatch.Main
