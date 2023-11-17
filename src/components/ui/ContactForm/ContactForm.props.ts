@@ -11,6 +11,7 @@ type FormItem = {
   placeholder?: string;
   help?: string;
   reactState: ReactState;
+  type?: 'default' | 'email';
 };
 
 export interface ContactFormProps {

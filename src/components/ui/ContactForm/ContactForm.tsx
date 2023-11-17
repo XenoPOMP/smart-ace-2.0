@@ -1,10 +1,16 @@
 'use client';
 
-import { VariableFC, WithParams } from '@xenopomp/advanced-types';
+import {
+  ArrayType,
+  Defined,
+  VariableFC,
+  WithParams,
+} from '@xenopomp/advanced-types';
 import { isUndefined } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
+import * as EmailValidator from 'email-validator';
 import { ArrowLeft, ArrowRight, HelpCircle } from 'lucide-react';
-import { useEffect } from 'react';
+import { ComponentProps, useEffect } from 'react';
 import { Tooltip } from 'react-tooltip';
 
 import Button from '@/src/components/ui/Button/Button';
@@ -22,12 +28,40 @@ const ContactForm: VariableFC<'form', ContactFormProps, 'children'> = ({
   subCaption,
   items,
   links,
+
   ...props
 }) => {
   const [isFormValid, toggleIsFormValid, setIsFormValid] = useBoolean(true);
 
+  const validateInput = (
+    input: string,
+    type: Defined<
+      ArrayType<Defined<ComponentProps<typeof ContactForm>['items']>>['type']
+    >
+  ): boolean => {
+    switch (type) {
+      case 'default': {
+        return true;
+      }
+
+      case 'email': {
+        return EmailValidator.validate(input);
+      }
+    }
+
+    return true;
+  };
+
   const revalidateForm = () => {
-    setIsFormValid(false);
+    setIsFormValid(true);
+
+    items?.forEach(({ reactState, type = 'default' }) => {
+      const { state: input } = reactState;
+
+      if (!validateInput(input, type)) {
+        setIsFormValid(false);
+      }
+    });
   };
 
   useEffect(
@@ -52,52 +86,54 @@ const ContactForm: VariableFC<'form', ContactFormProps, 'children'> = ({
         <h3>{subCaption}</h3>
 
         <article className={cn(styles.items)}>
-          {items?.map(({ title, placeholder, help, reactState }, index) => {
-            const inputId = useUniqueId(id => {
-              return `input-${id}`;
-            });
+          {items?.map(
+            ({ title, placeholder, help, reactState, type }, index) => {
+              const inputId = useUniqueId(id => {
+                return `input-${id}`;
+              });
 
-            return (
-              <>
-                <label htmlFor={inputId}>{title}</label>
+              return (
+                <>
+                  <label htmlFor={inputId}>{title}</label>
 
-                <input
-                  placeholder={placeholder}
-                  id={inputId}
-                  content={reactState.state}
-                  onChange={ev => {
-                    reactState.setState(ev.currentTarget.value);
-                  }}
-                />
+                  <input
+                    placeholder={placeholder}
+                    id={inputId}
+                    content={reactState.state}
+                    onChange={ev => {
+                      reactState.setState(ev.currentTarget.value);
+                    }}
+                  />
 
-                <div className={cn('w-full')}>
-                  {!isUndefined(help) && (
-                    <>
-                      <Button
-                        variant={'header'}
-                        className={cn(
-                          styles.help,
-                          '!bg-inp-back aspect-square !text-ord-font-primary',
-                          'cursor-help'
-                        )}
-                        data-tooltip-id={`${inputId}-tooltip`}
-                      >
-                        <HelpCircle />
-                      </Button>
+                  <div className={cn('w-full')}>
+                    {!isUndefined(help) && (
+                      <>
+                        <Button
+                          variant={'header'}
+                          className={cn(
+                            styles.help,
+                            '!bg-inp-back aspect-square !text-ord-font-primary',
+                            'cursor-help'
+                          )}
+                          data-tooltip-id={`${inputId}-tooltip`}
+                        >
+                          <HelpCircle />
+                        </Button>
 
-                      <Tooltip
-                        id={`${inputId}-tooltip`}
-                        className={cn('!bg-popup-back !text-popup-font')}
-                        place={'right'}
-                      >
-                        {help}
-                      </Tooltip>
-                    </>
-                  )}
-                </div>
-              </>
-            );
-          })}
+                        <Tooltip
+                          id={`${inputId}-tooltip`}
+                          className={cn('!bg-popup-back !text-popup-font')}
+                          place={'right'}
+                        >
+                          {help}
+                        </Tooltip>
+                      </>
+                    )}
+                  </div>
+                </>
+              );
+            }
+          )}
         </article>
       </section>
 

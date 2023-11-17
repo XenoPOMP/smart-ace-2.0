@@ -1,40 +1,43 @@
 'use client';
 
-import { WithParams } from '@xenopomp/advanced-types';
+import { WithParams, WithSearchParams } from '@xenopomp/advanced-types';
 import { FC, useState } from 'react';
 
 import ContactForm from '@/src/components/ui/ContactForm/ContactForm';
 import { servicesData } from '@/src/data/services.data';
 import { createQueryString } from '@/src/utils/createQueryString';
 
-const YourNameStagePage: FC<WithParams<{}, 'serviceId'>> = ({ params }) => {
+const EmailOrderPage: FC<
+  WithSearchParams<WithParams<{}, 'serviceId'>, 'name'>
+> = ({ params, searchParams }) => {
   const { serviceId } = params;
 
   const currentService = servicesData.groups
     .flatMap(group => group.services)
     .find(service => service.id === +serviceId);
 
-  const [name, setName] = useState<string | undefined>(undefined);
+  const [email, setEmail] = useState<string | undefined>(undefined);
 
   return (
     <>
       <ContactForm
         caption={currentService?.title}
-        subCaption={'Как к вам обращаться?'}
+        subCaption={'Как с вами связаться?'}
         items={[
           {
-            title: '',
-            placeholder: 'Введите ваше имя',
+            title: 'Email',
+            placeholder: 'Введите ваш email',
             reactState: {
-              state: name,
-              setState: setName,
+              state: email,
+              setState: setEmail,
             },
-            type: 'default',
+            type: 'email',
           },
         ]}
         links={{
-          next: `/order/${serviceId}/stage/2?${createQueryString({
-            name: name ?? '',
+          next: `/order/${serviceId}/stage/3?${createQueryString({
+            ...searchParams,
+            email: email ?? '',
           })}`,
         }}
       />
@@ -42,4 +45,4 @@ const YourNameStagePage: FC<WithParams<{}, 'serviceId'>> = ({ params }) => {
   );
 };
 
-export default YourNameStagePage;
+export default EmailOrderPage;
