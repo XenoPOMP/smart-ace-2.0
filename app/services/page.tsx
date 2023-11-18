@@ -17,7 +17,6 @@ const ServicePage: FC<{}> = ({}) => {
 
   return (
     <>
-      Sus with services
       <ServiceSearchBlock className={cn(styles.mobileSearch)} />
     </>
   );
