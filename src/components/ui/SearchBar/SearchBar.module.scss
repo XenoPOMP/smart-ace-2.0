@@ -1,0 +1,29 @@
+@import "src/styles/templates";
+
+.searchBarWrapper {
+  @apply bg-head-button-back rounded-[.35em] h-[2.1em]
+         px-[.5em];
+
+  display: grid;
+  // grid-template-columns: max-content 1fr max-content;
+  grid-template-columns: max-content 1fr;
+
+  input.searchBar {
+    @apply text-service-font bg-transparent px-[.75em];
+
+    outline: none;
+    border: none;
+
+    &::placeholder {
+      @apply text-head-icon-color-inactive;
+    }
+  }
+
+  .iconHolder {
+    @extend %flexCenter;
+
+    @apply text-head-icon-color-inactive aspect-square;
+
+    align-self: center;
+  }
+}

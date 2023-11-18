@@ -1,10 +1,8 @@
 import { Defined, VariableFC } from '@xenopomp/advanced-types';
-import { isUndefined } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
-import Link from 'next/link';
-import { FC } from 'react';
 
 import CustomLink from '@/src/components/ui/CustomLink/CustomLink';
+import SearchBar from '@/src/components/ui/SearchBar/SearchBar';
 import Tag from '@/src/components/ui/Tag/Tag';
 import { servicesData } from '@/src/data/services.data';
 
@@ -25,6 +23,8 @@ const ServiceSearchBlock: VariableFC<
 
   return (
     <section className={cn('', styles.search, className)} {...props}>
+      <SearchBar className={cn('')} />
+
       <article className={cn('', styles.links)}>
         {servicesData.groups.map(group => {
           const { title: groupTitle } = group;
