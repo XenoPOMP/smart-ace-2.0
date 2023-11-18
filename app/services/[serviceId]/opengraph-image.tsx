@@ -31,15 +31,15 @@ export default async function Image({ params }: WithParams<{}, 'serviceId'>) {
       >
         <div
           style={{
-            flexGrow: 1,
             display: 'flex',
+            alignItems: 'center',
             padding: `${PADDING}px ${PADDING}px 0 ${PADDING}px`,
             gap: PADDING,
           }}
         >
           <svg
-            width='200'
-            height='200'
+            width='100'
+            height='100'
             viewBox='0 0 200 200'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -58,11 +58,11 @@ export default async function Image({ params }: WithParams<{}, 'serviceId'>) {
 
           <h1
             style={{
-              fontSize: '108px',
+              fontSize: '75px',
               fontWeight: 600,
             }}
           >
-            {currentService?.title}
+            <b>Услуги</b> | <strong>{currentService?.title}</strong>
           </h1>
         </div>
 
@@ -70,6 +70,7 @@ export default async function Image({ params }: WithParams<{}, 'serviceId'>) {
           style={{
             flexGrow: 1,
             display: 'flex',
+            padding: PADDING,
           }}
         ></div>
 
