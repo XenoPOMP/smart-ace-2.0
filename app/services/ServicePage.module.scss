@@ -9,6 +9,14 @@
     // padding-bottom: calc(var(--global-padding) / 2);
 
     font-size: 1rem; // 1em = 20px
+
+    section.mobileSearch {
+      display: none;
+
+      @media (max-width: 968px) {
+        display: block;
+      }
+    }
   }
 
   aside.searchBlock {
@@ -21,5 +29,13 @@
     padding-bottom: calc(var(--global-padding) / 2);
 
     font-size: 1rem; // 1em = 20px
+  }
+
+  @media (max-width: 968px) {
+    --proportion: max-content 1fr !important;
+
+    aside.searchBlock {
+      display: none;
+    }
   }
 }

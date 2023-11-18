@@ -15,7 +15,12 @@ const ServicePage: FC<{}> = ({}) => {
   //   `${process.env.API_URL}/comments`
   // );
 
-  return <>Sus with services</>;
+  return (
+    <>
+      Sus with services
+      <ServiceSearchBlock className={cn(styles.mobileSearch)} />
+    </>
+  );
 };
 
 export default ServicePage;

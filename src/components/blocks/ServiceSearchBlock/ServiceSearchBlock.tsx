@@ -1,4 +1,4 @@
-import { Defined } from '@xenopomp/advanced-types';
+import { Defined, VariableFC } from '@xenopomp/advanced-types';
 import { isUndefined } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -11,9 +11,11 @@ import { servicesData } from '@/src/data/services.data';
 import styles from './ServiceSearchBlock.module.scss';
 import type { ServiceSearchBlockProps } from './ServiceSearchBlock.props';
 
-const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
-  linkTagStyle = 'default',
-}) => {
+const ServiceSearchBlock: VariableFC<
+  'section',
+  ServiceSearchBlockProps,
+  'children'
+> = ({ linkTagStyle = 'default', className, ...props }) => {
   const currentVersion = servicesData.version;
 
   const tagStyle: Record<Defined<typeof linkTagStyle>, string> = {
@@ -22,7 +24,7 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
   };
 
   return (
-    <section className={cn('', styles.search)}>
+    <section className={cn('', styles.search, className)} {...props}>
       <article className={cn('', styles.links)}>
         {servicesData.groups.map(group => {
           const { title: groupTitle } = group;
@@ -44,7 +46,7 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
                       href={`/services/${id}`}
                       className={cn(
                         `flex flex-col-reverse ${tagStyle[linkTagStyle]} gap-x-[.4em]`,
-                        '',
+                        '!items-start',
                         styles.link
                       )}
                       applyStyles={false}
@@ -57,7 +59,6 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
                         <Tag
                           className={cn(
                             'bg-red-500 text-white text-[.65em] px-[.5em]',
-                            // 'mx-[1em]',
                             styles.tag
                           )}
                           style={{

@@ -1,11 +1,14 @@
 import { AsyncFC, WithParams } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { randomUUID } from 'crypto';
+import { MoveLeft, StepBack } from 'lucide-react';
 import { FC, Suspense } from 'react';
 
 import ServiceFooterBlock from '@/src/components/blocks/ServiceFooterBlock/ServiceFooterBlock';
 import CommentLoader from '@/src/components/loaders/CommentLoader/CommentLoader';
+import Button from '@/src/components/ui/Button/Button';
 import CreateCommentSection from '@/src/components/ui/CreateCommentSection/CreateCommentSection';
+import CustomLink from '@/src/components/ui/CustomLink/CustomLink';
 import Loader from '@/src/components/ui/Loader/Loader';
 import { servicesData } from '@/src/data/services.data';
 import CommentSection from '@/src/sections/CommentSection/CommentSection';
@@ -28,6 +31,21 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
 
   return (
     <>
+      <div className={cn(styles.controls)}>
+        <CustomLink
+          href={'/services'}
+          applyStyles={false}
+          className={cn('inline-block')}
+        >
+          <Button
+            variant={'header'}
+            className={cn('aspect-square rounded-[1em] mb-[1em]')}
+          >
+            <MoveLeft />
+          </Button>
+        </CustomLink>
+      </div>
+
       <header className={cn(styles.pageHeader)}>
         <h2>{currentService?.title}</h2>
 
