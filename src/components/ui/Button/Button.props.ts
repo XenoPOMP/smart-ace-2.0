@@ -1,4 +1,4 @@
 export interface ButtonProps {
-  variant?: 'default' | 'headerRound' | 'secondary' | 'error';
+  variant?: 'default' | 'headerRound' | 'header' | 'secondary' | 'error';
   blocked?: boolean;
 }

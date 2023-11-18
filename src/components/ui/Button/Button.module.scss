@@ -6,15 +6,20 @@ button.appButton {
   }
 
   &.header {
+    @extend %flexCenter;
+
+    @apply text-head-icon-color-inactive
+    bg-head-button-back;
+
+    &:not(&.blocked) {
+      @apply hover:text-head-icon-color;
+    }
+
+    transition: .15s ease color;
+    height: 3.3em;
+
     &.round {
-      @extend %flexCenter;
 
-      @apply text-head-icon-color-inactive
-             hover:text-head-icon-color
-             bg-head-button-back;
-
-      transition: .15s ease color;
-      height: 3.3em;
       aspect-ratio: 1;
       border-radius: 50%;
     }

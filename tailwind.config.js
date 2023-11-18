@@ -69,7 +69,7 @@ module.exports = {
           'rgba(94.56250101327896 92.98645958304405 92.98645958304405 / 1)',
         'blog-back-primary':
           'rgba(236.93750202655792 233.9757889509201 233.9757889509201 / 1)',
-        'ord-font-primary': 'rgba(0 0 0 / 1)',
+        'ord-font-primary': 'rgb(0 0 0)',
         'ord-font-error': 'rgba(255 0 0 / 1)',
         'inp-back': 'rgba(255 255 255 / 1)',
         'popup-back': 'rgba(0 0 0 / 1)',

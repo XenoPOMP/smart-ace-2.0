@@ -18,7 +18,7 @@ const FrontCard: VariableFC<'section', FrontCardProps, 'children'> = ({
   ...props
 }) => {
   return (
-    <CustomLink href={href}>
+    <CustomLink href={href} applyStyles={false}>
       <section className={cn(styles.frontCard, className)} {...props}>
         <header>
           <h2>{title}</h2>

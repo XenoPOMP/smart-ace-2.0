@@ -16,8 +16,12 @@ const ServiceFooterBlock: VariableFC<
   return (
     <footer className={cn(styles.service, className)} {...props}>
       <CustomLink
-        href={`/services/${serviceId}/order`}
-        className={cn('flex-grow')}
+        href={`/order/${serviceId}/stage/1`}
+        className={cn('flex-grow z-2')}
+        style={{
+          pointerEvents: 'all',
+        }}
+        applyStyles={false}
       >
         <Button
           variant={'secondary'}
