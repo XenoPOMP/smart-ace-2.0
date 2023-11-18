@@ -1,9 +1,11 @@
 'use client';
 
 import { VariableFC } from '@xenopomp/advanced-types';
+import { isUndefined } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
-import { X as CloseIcon, Search as SearchIcon } from 'lucide-react';
-import { FC, useState } from 'react';
+import { Search as SearchIcon } from 'lucide-react';
+import { parseAsString, useQueryState } from 'next-usequerystate';
+import { useEffect, useState } from 'react';
 
 import styles from './SearchBar.module.scss';
 import type { SearchBarProps } from './SearchBar.props';
@@ -12,7 +14,13 @@ const SearchBar: VariableFC<'input', SearchBarProps> = ({
   className,
   ...props
 }) => {
-  const [query, setQuery] = useState<string | undefined>(undefined);
+  const [query, setQuery] = useQueryState<string>('q', parseAsString);
+
+  useEffect(() => {
+    if (isUndefined(query)) {
+      return;
+    }
+  }, [query]);
 
   return (
     <div className={cn(styles.searchBarWrapper)} role={'search'}>
@@ -23,7 +31,7 @@ const SearchBar: VariableFC<'input', SearchBarProps> = ({
       <input
         className={cn(styles.searchBar)}
         placeholder={'Поиск'}
-        content={query}
+        content={query ?? undefined}
         onChange={ev => setQuery(ev.currentTarget.value)}
       />
 
