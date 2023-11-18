@@ -2,17 +2,43 @@
 
 .searchBarWrapper {
   @apply bg-head-button-back rounded-[.35em] h-[2.1em]
-         px-[.5em];
+         px-[.5em] mb-[1em] relative;
 
   display: grid;
   // grid-template-columns: max-content 1fr max-content;
   grid-template-columns: max-content 1fr;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  &:before,
+  &:after {
+    @apply bg-background-primary;
+
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 1em;
+    width: 100%;
+    z-index: -20;
+  }
+
+  &:before {
+    bottom: 100%;
+    height: 100dvh;
+  }
+
+  &:after {
+    top: 100%;
+  }
 
   input.searchBar {
     @apply text-service-font bg-transparent px-[.75em];
 
     outline: none;
     border: none;
+    z-index: 10;
 
     &::placeholder {
       @apply text-head-icon-color-inactive;
