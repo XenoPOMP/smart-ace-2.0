@@ -1,5 +1,8 @@
+'use client';
+
 import { Defined, VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
+import { parseAsString, useQueryState } from 'next-usequerystate';
 
 import CustomLink from '@/src/components/ui/CustomLink/CustomLink';
 import SearchBar from '@/src/components/ui/SearchBar/SearchBar';
@@ -41,6 +44,8 @@ const ServiceSearchBlock: VariableFC<
 
                   const isNew = version >= currentVersion;
 
+                  const [query] = useQueryState<string>('q', parseAsString);
+
                   return (
                     <CustomLink
                       href={`/services/${id}`}
@@ -52,7 +57,9 @@ const ServiceSearchBlock: VariableFC<
                       applyStyles={false}
                     >
                       <div className={cn(styles.body)}>
-                        <h4>{title}</h4>
+                        <h4>
+                          {title} (q={query})
+                        </h4>
                       </div>
 
                       {isNew && (
