@@ -1,4 +1,4 @@
-import { IService } from '@/src/interfaces/Service.interface';
+import { Hardness, IService } from '@/src/interfaces/Service.interface';
 
 export const servicesData: {
   version: number;
@@ -19,6 +19,7 @@ export const servicesData: {
           desc: 'Закажите лендинг- и получите эффективный инструмент для привлечения клиентов и увеличения продаж.',
           minPrice: 10000,
           executionTime: [2, 6],
+          hardness: Hardness.Easy,
         },
       ],
     },
