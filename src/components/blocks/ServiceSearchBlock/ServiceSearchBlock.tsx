@@ -3,11 +3,14 @@
 import { Defined, VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { parseAsString, useQueryState } from 'next-usequerystate';
+// @ts-ignore
+import * as stringSearcher from 'string-search';
 
 import CustomLink from '@/src/components/ui/CustomLink/CustomLink';
 import SearchBar from '@/src/components/ui/SearchBar/SearchBar';
 import Tag from '@/src/components/ui/Tag/Tag';
 import { servicesData } from '@/src/data/services.data';
+import useBoolean from '@/src/hooks/useBoolean';
 
 import styles from './ServiceSearchBlock.module.scss';
 import type { ServiceSearchBlockProps } from './ServiceSearchBlock.props';
@@ -45,37 +48,54 @@ const ServiceSearchBlock: VariableFC<
                   const isNew = version >= currentVersion;
 
                   const [query] = useQueryState<string>('q', parseAsString);
+                  const [isMatch, toggleIsMatch, setIsMatch] = useBoolean(true);
+
+                  stringSearcher
+                    .find(title, query)
+                    .then(
+                      (resultArr: Array<{ line: number; text: string }>) => {
+                        const isMatch = resultArr.length > 0;
+
+                        if (query === null) {
+                          return;
+                        }
+
+                        setIsMatch(isMatch);
+                      }
+                    );
 
                   return (
-                    <CustomLink
-                      href={`/services/${id}`}
-                      className={cn(
-                        `flex flex-col-reverse ${tagStyle[linkTagStyle]} gap-x-[.4em]`,
-                        '!items-start',
-                        styles.link
-                      )}
-                      applyStyles={false}
-                    >
-                      <div className={cn(styles.body)}>
-                        <h4>
-                          {title} (q={query})
-                        </h4>
-                      </div>
-
-                      {isNew && (
-                        <Tag
+                    <>
+                      {isMatch && (
+                        <CustomLink
+                          href={`/services/${id}`}
                           className={cn(
-                            'bg-red-500 text-white text-[.65em] px-[.5em]',
-                            styles.tag
+                            `flex flex-col-reverse ${tagStyle[linkTagStyle]} gap-x-[.4em]`,
+                            '!items-start',
+                            styles.link
                           )}
-                          style={{
-                            borderRadius: '.5em .5em 0 0',
-                          }}
+                          applyStyles={false}
                         >
-                          Новинка
-                        </Tag>
+                          <div className={cn(styles.body)}>
+                            <h4>{title}</h4>
+                          </div>
+
+                          {isNew && (
+                            <Tag
+                              className={cn(
+                                'bg-red-500 text-white text-[.65em] px-[.5em]',
+                                styles.tag
+                              )}
+                              style={{
+                                borderRadius: '.5em .5em 0 0',
+                              }}
+                            >
+                              Новинка
+                            </Tag>
+                          )}
+                        </CustomLink>
                       )}
-                    </CustomLink>
+                    </>
                   );
                 })}
               </div>
