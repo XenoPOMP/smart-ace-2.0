@@ -22,38 +22,56 @@ const ServiceSearchBlock: FC<ServiceSearchBlockProps> = ({
   };
 
   return (
-    <section className={cn('')}>
-      <p>Search what you need</p>
-
-      <article className={cn('flex flex-col')}>
+    <section className={cn('', styles.search)}>
+      <article className={cn('', styles.links)}>
         {servicesData.groups.map(group => {
           const { title: groupTitle } = group;
 
           return (
-            <>
-              <strong>{groupTitle}</strong>
+            <div className={cn(styles.group)}>
+              <h3>
+                <strong>{groupTitle}</strong>
+              </h3>
 
-              {group.services.map(service => {
-                const { id, title, version } = service;
+              <div className={cn(styles.linkGroup)}>
+                {group.services.map(service => {
+                  const { id, title, version } = service;
 
-                const isNew = version >= currentVersion;
+                  const isNew = version >= currentVersion;
 
-                return (
-                  <CustomLink
-                    href={`/services/${id}`}
-                    className={cn(
-                      `flex ${tagStyle[linkTagStyle]} flex-wrap gap-x-[.4em]`
-                    )}
-                    applyStyles={false}
-                  >
-                    {title}{' '}
-                    {isNew && (
-                      <Tag className={cn('bg-red-500 text-white')}>Новинка</Tag>
-                    )}
-                  </CustomLink>
-                );
-              })}
-            </>
+                  return (
+                    <CustomLink
+                      href={`/services/${id}`}
+                      className={cn(
+                        `flex flex-col-reverse ${tagStyle[linkTagStyle]} gap-x-[.4em]`,
+                        '',
+                        styles.link
+                      )}
+                      applyStyles={false}
+                    >
+                      <div className={cn(styles.body)}>
+                        <h4>{title}</h4>
+                      </div>
+
+                      {isNew && (
+                        <Tag
+                          className={cn(
+                            'bg-red-500 text-white text-[.65em] px-[.5em]',
+                            // 'mx-[1em]',
+                            styles.tag
+                          )}
+                          style={{
+                            borderRadius: '.5em .5em 0 0',
+                          }}
+                        >
+                          Новинка
+                        </Tag>
+                      )}
+                    </CustomLink>
+                  );
+                })}
+              </div>
+            </div>
           );
         })}
       </article>

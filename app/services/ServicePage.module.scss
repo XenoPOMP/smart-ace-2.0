@@ -12,7 +12,7 @@
   }
 
   aside.searchBlock {
-    background: rgba(0 0 255 / .25);
+    @extend %scrollable;
 
     width: min(539px, 28vw);
 

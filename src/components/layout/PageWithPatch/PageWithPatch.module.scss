@@ -8,10 +8,16 @@
 
   main.mainPageBlock,
   aside.mainPageBlock {
-    @apply pt-[146px];
+    --header-safe-padding: 146px;
+
+    padding-top: var(--header-safe-padding);
+
+    // @apply pt-[146px];
 
     @media (max-width: 748px) {
-      @apply pt-[106px];
+      // @apply pt-[106px];
+
+      --header-safe-padding: 106px;
     }
   }
 }

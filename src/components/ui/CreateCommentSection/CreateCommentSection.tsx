@@ -62,7 +62,7 @@ const CreateCommentSection: VariableFC<
   };
 
   const sharedTextareaProps: ComponentProps<typeof TextareaAutosize> = {
-    autoFocus: true,
+    autoFocus: false,
     cacheMeasurements: true,
     maxRows: Infinity,
   };
