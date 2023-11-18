@@ -92,6 +92,12 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+
+      zIndex: {
+        header: 100,
+        'under-header-content': 110,
+        'header-content': 120,
+      },
     },
   },
   plugins: [],
