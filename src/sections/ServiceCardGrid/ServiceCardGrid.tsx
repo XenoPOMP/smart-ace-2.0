@@ -3,6 +3,7 @@ import { isNullOrUndefined } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
 import { FC, ReactNode, Suspense } from 'react';
 
+import HardnessMeter from '@/src/components/ui/HardnessMeter/HardnessMeter';
 import Loader from '@/src/components/ui/Loader/Loader';
 import ServiceCard from '@/src/components/ui/ServiceCard/ServiceCard';
 import ServiceRating from '@/src/components/ui/ServiceRating/ServiceRating';
@@ -51,7 +52,15 @@ const ServiceCardGrid: AsyncVariableFC<
 
           <ServiceCard title={'Сложность'} className={cn(styles.card)}>
             <span>
-              <Element target={service?.hardness} />
+              <Element
+                target={
+                  isNullOrUndefined(service?.hardness) ? undefined : (
+                    <>
+                      <HardnessMeter hardness={service.hardness} />
+                    </>
+                  )
+                }
+              />
             </span>
           </ServiceCard>
 
