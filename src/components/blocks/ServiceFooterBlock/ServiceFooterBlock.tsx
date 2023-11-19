@@ -1,5 +1,6 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
+import { MoveLeft } from 'lucide-react';
 import { FC } from 'react';
 
 import Button from '@/src/components/ui/Button/Button';
@@ -15,6 +16,19 @@ const ServiceFooterBlock: VariableFC<
 > = ({ className, serviceId, ...props }) => {
   return (
     <footer className={cn(styles.service, className)} {...props}>
+      <CustomLink
+        href={'/services'}
+        applyStyles={false}
+        className={cn('inline-block')}
+      >
+        <Button
+          variant={'header'}
+          className={cn('aspect-square rounded-[1em]')}
+        >
+          <MoveLeft />
+        </Button>
+      </CustomLink>
+
       <CustomLink
         href={`/order/${serviceId}/stage/1`}
         className={cn('flex-grow z-2')}

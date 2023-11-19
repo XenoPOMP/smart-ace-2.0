@@ -31,20 +31,7 @@ const ServiceWithIdPage: AsyncFC<WithParams<{}, 'serviceId'>> = async ({
 
   return (
     <>
-      <div className={cn(styles.controls)}>
-        <CustomLink
-          href={'/services'}
-          applyStyles={false}
-          className={cn('inline-block')}
-        >
-          <Button
-            variant={'header'}
-            className={cn('aspect-square rounded-[1em] mb-[1em]')}
-          >
-            <MoveLeft />
-          </Button>
-        </CustomLink>
-      </div>
+      <div className={cn(styles.controls)}></div>
 
       <header className={cn(styles.pageHeader)}>
         <h2>{currentService?.title}</h2>
