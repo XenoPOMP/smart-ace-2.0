@@ -26,6 +26,10 @@ const ServiceRating: AsyncVariableFC<
     return 'N/A';
   }
 
+  if (isNaN(averageRating)) {
+    return 'N/A';
+  }
+
   return (
     <>
       <Rating {...props} rating={roundNumber(averageRating, 2)} />
