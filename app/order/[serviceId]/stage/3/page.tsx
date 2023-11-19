@@ -31,6 +31,8 @@ const FinalStagePage: FC<
   const sendContacts = () => {
     setIsSending(true);
 
+    return;
+
     axios
       .patch<any, AxiosResponse<any, any>, ContactPatchType>(
         `${process.env.API_URL}/contacts`,
