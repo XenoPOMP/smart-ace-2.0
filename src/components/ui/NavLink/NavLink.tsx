@@ -19,7 +19,13 @@ const NavLink: VariableFC<typeof CustomLink, NavLinkProps, 'applyStyles'> = ({
 }) => {
   const pathName = usePathname();
 
-  const isThisPageCurrent = pathName === href;
+  const isThisPageCurrent: boolean = (() => {
+    if (href === '/') {
+      return pathName === href;
+    }
+
+    return pathName.includes(href.toString(), 0);
+  })();
 
   return (
     <CustomLink
