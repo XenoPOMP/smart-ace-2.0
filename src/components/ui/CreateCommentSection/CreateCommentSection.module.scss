@@ -2,7 +2,7 @@
 
 section.createComment {
   @apply bg-head-button-back
-         rounded-[1em] flex flex-col gap-[.5em];
+         rounded-[1em] flex flex-col gap-[.5em] relative z-[-1];
 
   width: 100%;
   height: auto;

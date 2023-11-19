@@ -126,7 +126,7 @@ const CreateCommentSection: VariableFC<
       <Button
         variant={isError ? 'error' : 'secondary'}
         className={cn(
-          'font-semibold py-[.45em] px-[.9em] text-[.75em] rounded-[.65em]',
+          'font-semibold py-[.45em] px-[.9em] text-[.75em] rounded-[.65em] z-[0]',
           'relative',
           styles.submit
         )}
