@@ -15,7 +15,11 @@ export interface IService {
   desc?: string;
 
   minPrice?: number;
+  isPaymentMonthly?: boolean;
+
   executionTime?: [number, number];
+  isExecutedImmediately?: boolean;
+
   hardness?: Hardness;
 }
 

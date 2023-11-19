@@ -33,7 +33,15 @@ const ServiceCardGrid: AsyncVariableFC<
         <section className={cn(styles.serviceGrid, className)} {...props}>
           <ServiceCard title={'Цена'} className={cn(styles.card)}>
             <span>
-              от <Element target={service?.minPrice} /> рублей
+              {service?.isPaymentMonthly ? (
+                <>
+                  от <Element target={service?.minPrice} /> руб. / месяц
+                </>
+              ) : (
+                <>
+                  от <Element target={service?.minPrice} /> рублей
+                </>
+              )}
             </span>
           </ServiceCard>
 
@@ -41,8 +49,14 @@ const ServiceCardGrid: AsyncVariableFC<
             <span>
               {service?.executionTime ? (
                 <>
-                  от <Element target={service?.executionTime?.at(0)} /> до{' '}
-                  <Element target={service?.executionTime?.at(1)} /> недель
+                  {service?.isExecutedImmediately ? (
+                    <>Моментально</>
+                  ) : (
+                    <>
+                      от <Element target={service?.executionTime?.at(0)} /> до{' '}
+                      <Element target={service?.executionTime?.at(1)} /> недель
+                    </>
+                  )}
                 </>
               ) : (
                 <Element target={undefined} />
@@ -76,7 +90,7 @@ const ServiceCardGrid: AsyncVariableFC<
 ServiceCardGrid.Layout = ({}) => {
   return (
     <>
-      <section className={cn(styles.serviceGrid)}>
+      <section className={cn(styles.serviceGrid, 'mb-[1em]')}>
         <ServiceCard title={'Цена'} className={cn(styles.card)}>
           <Loader />
         </ServiceCard>
