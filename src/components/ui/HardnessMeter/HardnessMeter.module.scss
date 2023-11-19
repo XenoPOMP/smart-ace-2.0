@@ -1,0 +1,37 @@
+.meter {
+  @apply flex justify-center items-center gap-[.5em];
+
+  svg {
+    path.main {
+      &.withStroke {
+        @apply stroke-current;
+      }
+
+      &.withFill {
+        @apply fill-current;
+      }
+    }
+
+    path.track {
+      @apply fill-head-icon-color;
+    }
+
+    path.meter {
+      &.easy {
+        @apply fill-service-speed-two;
+      }
+
+      &.medium {
+        @apply fill-service-speed-three;
+      }
+
+      &.hard {
+        @apply fill-service-speed-four;
+      }
+
+      &.hardcore {
+        @apply fill-service-speed-max;
+      }
+    }
+  }
+}
