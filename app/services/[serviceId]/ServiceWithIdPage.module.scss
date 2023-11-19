@@ -1,3 +1,17 @@
+.controls {
+  @apply sticky top-0 left-0 bg-background-primary;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: inherit;
+    width: 100%;
+    height: var(--header-safe-padding);
+  }
+}
+
 header.pageHeader {
   h2 {
     @apply font-semibold text-[2.5em] text-service-font;
